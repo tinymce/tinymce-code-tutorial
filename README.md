@@ -16,6 +16,8 @@ You'll need installed:
 
 *Clone this repo* to your own GitHub account and work through the exercises. Most of the exercises involve you filling in the blanks and running tests. We'll be writing some tests and using some external tools, too.
 
+Anything with a TODO is something you need to fill in.
+
 When you're finished a section, let your tutor know and they will review your code.
 
 # Tips

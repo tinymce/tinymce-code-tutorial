@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/tinymce/tinymce-code-tutorial/issues"
   },
-  "homepage": "https://github.com/tinymce/tinymce-code-tutorial#readme"
+  "homepage": "https://github.com/tinymce/tinymce-code-tutorial#readme",
+  "dependencies": {
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "@ephox/bedrock-client": "^9.6.1",
+    "@ephox/bedrock-server": "^9.6.3"
+  }
 }
