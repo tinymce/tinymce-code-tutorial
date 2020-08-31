@@ -24,11 +24,12 @@ import fc from 'fast-check';
 import * as CodeStyle from '../../main/ts/1CodeStyle';
 
 UnitTest.test('width property', () => {
-  fc.assert(
-    fc.property(fc.integer(0, 100), fc.integer(0, 100), fc.integer(0, 100), fc.integer(0, 100),
-      (x1, y1, width, y2) => {
-        const x2 = x1 + width;
-        Assert.eq('width', width, CodeStyle.width({ x1, x2, y1, y2 }));
-      })
-  );
+  // TODO: uncomment
+  // fc.assert(
+  //   fc.property(fc.integer(0, 100), fc.integer(0, 100), fc.integer(0, 100), fc.integer(0, 100),
+  //     (x1, y1, width, y2) => {
+  //       const x2 = x1 + width;
+  //       Assert.eq('width', width, CodeStyle.width({ x1, x2, y1, y2 }));
+  //     })
+  // );
 });
