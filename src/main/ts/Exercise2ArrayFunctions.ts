@@ -1,4 +1,4 @@
-import { Arr } from '@ephox/katamari';
+import {Arr, Strings} from '@ephox/katamari';
 
 /*
 Katamari is our library for general-purpose functions and FP basics.
@@ -85,3 +85,34 @@ export const evens = (xs: number[]): number[] =>
 // TODO: Run the provided test to check your answer.
 export const ribbitting = (frogs: Frog[]): Frog[] =>
   []
+
+// TODO: Write a function that returns all frogs aged 8 or older
+export const olderFrogs = (frogs: Frog[]): Frog[] =>
+  []
+
+/*
+5. Arr.exists
+
+Arr.exists returns true if there is one or more element that matches a predicate.
+ */
+
+// TODO: Write a function that returns true if there's one or more ribbiting frogs
+
+// TODO: Write a function that takes an array of numbers, and returns true if there are any negative numbers
+
+/*
+6. Arr.bind
+
+Arr.bind is like Arr.map, in that it maps a function over an array. However, the function must return an array.
+This results in an array of arrays, which is then flattened.
+
+This behaviour of running map then flatten is why this function is sometimes called "flatmap".
+
+TODO: Write a function that takes a list of strings, each string containing a comma-separated list of values, and returns all of the values as an array.
+ */
+export const splitCsvs = (csvs: string[]): string[] =>
+  []
+
+
+
+

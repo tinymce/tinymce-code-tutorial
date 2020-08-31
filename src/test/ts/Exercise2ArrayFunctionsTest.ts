@@ -19,3 +19,17 @@ UnitTest.test('ribbitting frogs', () => {
     { name: 'loudfrog', ribbits: true, age: 1 }
   ], Ex.ribbitting(Ex.myFrogs));
 });
+
+UnitTest.test('older frogs', () => {
+  Assert.eq('older frogs', [
+    { name: 'quietfrog', ribbits: false, age: 10 }
+  ], Ex.olderFrogs(Ex.myFrogs))
+});
+
+UnitTest.test('csvs', () => {
+  Assert.eq('empty array', [], Ex.splitCsvs([]));
+  Assert.eq('single string', ['a'], Ex.splitCsvs(['a']));
+  Assert.eq('single csv string', ['a', 'b'], Ex.splitCsvs(['a,b']));
+  Assert.eq('several strings', ['a', 'b'], Ex.splitCsvs(['a', 'b']));
+  Assert.eq('several csv strings', ['a', 'b', 'd', 'a'], Ex.splitCsvs(['a', 'b,d,a']));
+});
