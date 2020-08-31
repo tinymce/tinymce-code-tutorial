@@ -33,7 +33,12 @@ export const width = (b: Boundz): number =>
 // TODO implement height function
 
 /*
-At this point, run `yarn tsc` at your shell to make sure everything compiles.
+3. Compiling.
+
+TODO Run `yarn build` at your shell to make sure everything compiles.
+
+`build` is a script defined in the package.json. Have a look at package.json to see what it does.
+
 */
 
 /*
