@@ -54,5 +54,5 @@ type VVBounds = VisualViewport.Bounds;
 Ok, so we started off pretty easy.
 
 Now, code is useless without tests, so let's head over to 1CodeStyleTest.ts
-and let's write some tests.
+and write some tests.
 */
