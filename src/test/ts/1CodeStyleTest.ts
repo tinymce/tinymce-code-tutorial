@@ -16,7 +16,9 @@ UnitTest.test('width', () => {
   const b: Boundz = ({ x1: 3, y1: 4, x2: 7, y2: 8 });
   Assert.eq('Width', 4, CodeStyle.width(b));
 
-  // TODO: write another test case for width
+  const b2: Boundz = ({ x1: 3, y1: 4, x2: 78, y2: 9 });
+  Assert.eq('Width', 4, CodeStyle.width(b2));
+
 });
 
 // TODO: write a simple test case for height

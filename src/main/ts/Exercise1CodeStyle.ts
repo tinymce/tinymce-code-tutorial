@@ -15,7 +15,10 @@ Let's model the x,y of the top-left and bottom-right corners.
 *Remember* we like immutable data, so mark the fields readonly.
 */
 export interface Boundz {
-  // TODO: add fields: x1, y1, x2, y2
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number
 }
 
 /*
@@ -28,9 +31,10 @@ Notice also that we have an explicit return type. This lets the compiler check t
 code matches the type signature.
 */
 export const width = (b: Boundz): number =>
-  /* TODO */ -1;
+  b.x2 - b.x1;
 
-// TODO implement height function
+export const height = (b: Boundz): number =>
+  b.y2 - b.y1;
 
 /*
 At this point, run `yarn tsc` at your shell to make sure everything compiles.
