@@ -1,5 +1,3 @@
-import { VisualViewport } from '@ephox/sugar';
-
 /*
 Code Style
 ==========

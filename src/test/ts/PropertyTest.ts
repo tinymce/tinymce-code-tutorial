@@ -21,7 +21,7 @@ This is one type of property we can create, and we'll go into others later.
  */
 import { Assert, UnitTest } from '@ephox/bedrock-client';
 import fc from 'fast-check';
-import * as CodeStyle from '../../main/ts/1CodeStyle';
+import * as CodeStyle from '../../main/ts/Exercise1CodeStyle';
 
 UnitTest.test('width property', () => {
   // TODO: uncomment
