@@ -5,3 +5,5 @@
 *.js
 *.js.map
 *.tsbuildinfo
+*-bedrock-*.xml
+tests-imports.ts
