@@ -11,13 +11,13 @@ Concepts like "classes" containing "fields" and "methods" - we avoid those.
 Instead, we model data as *interfaces* - ideally with readonly fields -
 and we create "static" methods to operate on this data.
 
-1. Let's create a data structure to hold the bounds of an element,
-say the top, left, bottom and right as numbers.
+1. Let's create a data structure to hold the bounds of an element.
+Let's model the x,y of the top-left and bottom-right corners.
 
 *Remember* we like immutable data, so mark the fields readonly.
 */
-interface Boundz {
-  // TODO: add fields: top, right, bottom, left
+export interface Boundz {
+  // TODO: add fields: x1, y1, x2, y2
 }
 
 /*
@@ -36,19 +36,7 @@ export const width = (b: Boundz): number =>
 
 /*
 At this point, run `yarn tsc` at your shell to make sure everything compiles.
-
-3. This structure is similar to a structure in our Sugar DOM manipulation library,
-so let's see if we can convert between the two.
 */
-
-type VVBounds = VisualViewport.Bounds;
-
-// TODO
-// export const toSugarBounds = (b: Boundz): VVBounds => ({
-//
-// });
-
-// TODO: implement fromSugarBounds
 
 /*
 Ok, so we started off pretty easy.
