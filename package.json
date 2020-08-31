@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tinymce/tinymce-code-tutorial#readme",
   "dependencies": {
+    "@ephox/sugar": "^6.1.3",
     "typescript": "^4.0.2"
   },
   "devDependencies": {

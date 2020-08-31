@@ -10,13 +10,17 @@
     "sourceMap": true,
     "composite": true,
     "outDir": "lib",
-    "rootDir": "src/main/ts",
+    "rootDir": "src",
     "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "strict": true,
     "noEmitOnError": true,
     "types": []
-  }
+  },
+  "include": [
+    "src/main/ts",
+    "src/test/ts"
+  ]
 }
