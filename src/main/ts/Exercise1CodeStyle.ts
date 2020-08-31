@@ -44,6 +44,6 @@ TODO Run `yarn build` at your shell to make sure everything compiles.
 /*
 Ok, so we started off pretty easy.
 
-Now, code is useless without tests, so let's head over to 1CodeStyleTest.ts
+Now, code is useless without tests, so let's head over to Exercise1CodeStyleTest.ts
 and write some tests.
 */
