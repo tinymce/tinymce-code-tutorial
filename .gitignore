@@ -7,3 +7,4 @@
 *.tsbuildinfo
 *-bedrock-*.xml
 tests-imports.ts
+yarn-error.log
