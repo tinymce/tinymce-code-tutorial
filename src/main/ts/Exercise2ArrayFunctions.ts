@@ -1,4 +1,4 @@
-import {Arr, Strings} from '@ephox/katamari';
+import {Arr, Option, Strings} from '@ephox/katamari';
 
 /*
 Katamari is our library for general-purpose functions and FP basics.
@@ -113,6 +113,23 @@ TODO: Write a function that takes a list of strings, each string containing a co
 export const splitCsvs = (csvs: string[]): string[] =>
   []
 
+/*
+7. Arr.find
 
+Arr.find returns the first array element that matches a predicate.
+ */
 
+const found = Arr.find([1, 2, 3], (x) => x >= 2);
 
+// let's look at the return type...
+
+const f: Option<number> = found;
+
+/*
+You may have encountered Option in our interview exercises, or in languages like Haskell, Scala or Rust.
+
+Even if you have used them in the past, there's a trick to how we test these.
+
+We'll go into Option in more detail in Exercise 3...
+
+*/
