@@ -1,4 +1,4 @@
-import { Option as Optional } from "@ephox/katamari";
+import { Fun, Option as Optional } from "@ephox/katamari";
 
 /*
 Functional programming is about programming in functions. Functions in the mathematical sense. "Pure" functions.
@@ -29,13 +29,75 @@ What are the benefits we're trying to get?
   the mathematical properties of functions. It turns out that math has ... to put it mildly ... rather a lot to say about functions.
 
 Now, for the sake of time, I'm not going to do any more hard-sell on why it's important - lots has already been written
-on this topic. For the rest of this exercise, we're just going to look at some of the basic techniques and common
-functions we use.
+on this topic and can be found by searching the web. For the rest of this exercise, we're just going to look at some of the
+basic techniques and common functions we use.
 */
 
 /*
-Let's start with the simplest function there is: the identity function.
-It takes an argument and returns it.
+
+Extracting side-effects.
+
+In a lot of code, side-effects are mixed up with logic. The more we separate them, the more testable the actual logic is.
+
+In the below (impure) function, we're printing some text for each branch of the optional.
+ */
+export const printMessage1 = (e: Optional<string>): void =>
+  e.fold(
+    () => {
+      console.log("oop");
+    },
+    (s) => {
+      console.log("The value was " + s);
+    }
+  );
+
+/*
+The only way to test this would be to fake out the console somehow and capture its output, which can get pretty nasty.
+
+Really, this function is doing two things:
+
+1. calculating a string
+2. printing it
+
+Calculating the string is a pure function! Let's extract it:
+ */
+
+export const getMessage = (e: Optional<string>): string =>
+  e.fold(
+    () => "oop",
+    (s) => "The value was " + s
+  );
+
+export const printMessage2 = (e: Optional<string>): void =>
+  console.log(getMessage(e));
+
+/*
+Now, printMessage2 is still tricky to test, but getMessage is very easy to test. We've improved the testability of our code.
+
+TODO: Extract a pure function for the logic hiding in this (impure) function
+*/
+
+type Mode = 'code' | 'design' | 'markdown';
+
+const switchMode = (m: Mode): void => {
+  // pretend that something useful happens here
+}
+
+const nextMode = (m: Mode): void => {
+  if (m === 'code') {
+    switchMode('design');
+  } else if (m === 'design') {
+    switchMode('markdown');
+  } else {
+    switchMode('code');
+  }
+};
+
+
+/*
+The identity function.
+
+This is a very simple function that takes an argument and returns it.
 */
 
 const identity = <A> (a: A): A => a;
@@ -59,29 +121,105 @@ const getOrElse1 = <A> (oa: Optional<A>, other: A): A =>
 
 // TODO: write a version of getOrElse1 using Fun.identity.
 
+// TODO: What happens if you map the identity function over an Optional?
+// Answer: ...
+
+// TODO: What happens if you map the identity function over an Array?
+// Answer: ...
+
+/*
+In FP, we use a lot of little functions like identity, that seem insignificant on their own, but they come in handy
+and form a little toolkit for bashing the data you have into the shape it needs to be in.
+
+Next up is "constant". If you pass a value to this function, it gives you a function that always returns the same thing.
+
+You can find this as Fun.constant in katamari.
+
+One way of writing it is below:
+ */
+
+const constant = <A, B> (a: A) => (b: B) => a;
+
+const always3 = constant(3);
+
+/*
+So, constant ignores whatever is passed for the B parameter, and just returns the A.
+
+Again, this looks familiar from our getOrElse1 function above.
+
+TODO: rewrite getOrElse1 using both Fun.identity and the "constant" function defined above.
+ */
 
 
+/*
+Now, katamari's Fun.constant is slightly different to ours above:
 
-// You can also use fold to do some kind of "side-effect" on each branch, as below.
+const constant = <A, B> (a: A) => (b: B) => a; // ours
+const constant = <A> (a: A) => () => a;        // katamari's
+
+In most languages, this would be make the two incompatible. However, TypeScript is a bit more lenient and lets us
+use the second form everywhere the first form is expected.
+
+TODO: don't just take my word for it - use katamari's Fun.constant in you getOrElse and see if it compiles.
+ */
+
+// TODO: Write a function that takes an array of numbers and replaces each value with 9.
 
 
-export const message2 = (e: Optional<string>): void =>
-  e.fold(
-    () => {
-      console.log("oop");
-    },
-    (s) => {
-      console.log("The value was " + s);
-    }
-  );
+// TODO: In the previous question, what's the *same* between the input and output values
+// Answer:
 
-// We normally try to isolate side-effects, though, so we'd normally separate the calculation from the side effect
-export const message3 = (e: Optional<string>): void => {
-  const m = e.fold(
-    () => "no value",
-    (s) => "The value was " + s
-  );
-  console.log(m);
-}
 
+/*
+Function composition
+
+Functions take an input and return an output. Let's think of them as little machines with an input and output slots.
+Let's use terrible ASCII art to demonstrate, and generic letters A, B and C to represent their input and output types.
+
+Here's one function:
+
+]===>===[
+
+we stick in an A and it spits out a B:
+
+A ]===>===[ B
+
+Here's another function. This one takes a B and spits out a C.
+
+B }---*>---{ C
+
+So what happens if I plug these two together? Well, I should be able to make a machine that takes an A and spits out a C:
+
+A ]===>===[}---*>---{ C
+
+This is function composition.
+
+In TypeScript, it looks a bit like this:
+ */
+
+const compose = <A, B, C> (f: (a: B) => C, g: (a: A) => B) => (a: A): C => f(g(a));
+
+/*
+The below function "dblS" doubles a number then converts it to a string.
+ */
+
+const dbl = (x: number): number => x * 2;
+
+const dblS: (s: number) => string =
+  compose(String, dbl);
+
+/*
+It can read a bit funny, since it does the dbl, then the String. But, the order comes from the fact, e.g.
+
+compose(String, dbl) === (a) => String(dbl(x))
+
+Now, katamari has a Fun.compose1, which is like our compose here. It also has a Fun.compose, which has a gnarlier
+signature and handling for n-ary functions. Your rule-of-thumb is to use Fun.compose1 unless you really need Fun.compose.
+*/
+
+// TODO: use Fun.compose1 to write a function that doubles a number twice
+
+// TODO: Rewrite this function to use a single map call and function composition
+const dblOs = (oa: Optional<number>): Optional<string> =>
+  oa.map(dbl).map(String);
 

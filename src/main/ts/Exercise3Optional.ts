@@ -152,7 +152,10 @@ const y: Optional<string> = Optional.none<number>().map((x) => String(x)); // re
 
 // TODO: Write a function that takes an Optional<string> and prefixes the string with "hello"
 
-// TODO: If the below function is called, does it return a value or throw an exception? Write your answer in a comment, and explain why you think it behaves this way?
+/*
+TODO: If the below function is called, does it return a value or throw an exception? Why should it behave one way or the other?
+Answer: ...
+ */
 const willItKersplode = (): Optional<string> => {
   const z = Optional.none<string>();
   return z.map<string>((s) => {
