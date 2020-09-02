@@ -52,12 +52,15 @@ Optional.from take a value which may be null, undefined or an actual value.
 - otherwise, it returns some() of the value
 
 Optional.from is useful for taking values from the "nullable" world to the Optional world.
+
+TODO: use Optional.from to implement the following DOM function
  */
 
-// TODO: use Optional.from to implement the following DOM function
 export const getNextSibling = (e: Element): Optional<ChildNode> => {
   throw new Error("TODO");
 };
+
+// TODO: use Optional.from to implement a similar wrapper for Element.getAttributeNode(string)
 
 /*
 How do we get data out of an Optional? Well, that's a bit tricky since there isn't always
@@ -130,14 +133,53 @@ Let's explore this by converting Optionals to and from Arrays.
 
 
 /*
+One of the most useful functions on Optional is "map". We say this function "maps a function over the Optional".
+
+If the Optional is some, it runs the function over the some and returns the result as a "some".
+If the Optional. is none, it returns none.
+
+Above, we talked about how an Optional is like an array restricted to 0 or 1 elements, so mapping over an Optional
+is very similar to mapping over an array (which we did in Exercise 2).
+
+Some examples, then some exercises:
+ */
+
+const x: Optional<string> = Optional.some(3).map((x) => String(x)); // returns Optional.some("3")
+
+const y: Optional<string> = Optional.none<number>().map((x) => String(x)); // returns Optional.<string>none()
+
+// TODO: Write a function that takes an Optional<number> and adds 3 to the number
+
+// TODO: Write a function that takes an Optional<string> and prefixes the string with "hello"
+
+// TODO: If the below function is called, does it return a value or throw an exception? Write your answer in a comment, and explain why you think it behaves this way?
+const willItKersplode = (): Optional<string> => {
+  const z = Optional.none<string>();
+  return z.map<string>((s) => {
+    throw new Error("boom");
+  });
+};
+
+/*
 Well done! You've tackled the basis of Optionals. We'll dig into them a bit more in future exercises,
 but everything builds on what we've done here.
 
 TODO: head over to Exercise3OptionTest to write some test cases for the above.
+*/
 
 
-
+/*
 Below are some explanatory notes on some more advanced topics. Feel free to skip them if you're still learning.
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Aside: mapping
++
++ We've mapped over both Arrays and Optionals. A type that can be mapped over in this way
++ is called a Functor. Arrays and Optionals are Functors. Functors are a very useful abstraction,
++ but outside the scope of this tutorial.
++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -173,9 +215,11 @@ Below are some explanatory notes on some more advanced topics. Feel free to skip
 +
 + What if you want to take an object and get its fields? Well, that's called "destruction". We're
 + taking an object and destructing it into its constituent parts. You'll also find "destructuring assignment"
-+ as a feature of many languages, including TypeScript.
++ as a feature of many languages, including TypeScript. e.g. const { x } = { x: 3, y: 'foo' };
 +
 + Our "fold" function destructures the Option type. In category theory, "fold" is known as a "catamorphism".
 +
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
  */
+
