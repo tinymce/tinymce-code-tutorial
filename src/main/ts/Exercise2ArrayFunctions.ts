@@ -1,4 +1,4 @@
-import {Arr, Option, Strings} from '@ephox/katamari';
+import { Arr, Option as Optional } from '@ephox/katamari';
 
 /*
 Katamari is our library for general-purpose functions and FP basics.
@@ -123,10 +123,10 @@ const found = Arr.find([1, 2, 3], (x) => x >= 2);
 
 // let's look at the return type...
 
-const f: Option<number> = found;
+const f: Optional<number> = found;
 
 /*
-You may have encountered Option in our interview exercises, or in languages like Haskell, Scala or Rust.
+You may have encountered Optional in our interview exercises, or in languages like Haskell, Scala or Rust.
 
 Even if you have used them in the past, there's a trick to how we test these.
 
