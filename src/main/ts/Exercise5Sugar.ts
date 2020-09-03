@@ -1,4 +1,4 @@
-import { Element as SugarElement } from '@ephox/sugar';
+import { Element as SugarElement, Document as SugarDocument, Traverse, Insert } from '@ephox/sugar';
 
 // TODO: remove when we upgrade this tutorial to TinyMCE 5
 import { Element, document } from '@ephox/dom-globals';
@@ -20,7 +20,62 @@ Wrapping
 The first thing we need to know is how to wrap and unwrap a sugar element.
  */
 
+
 const e1: Element = document.createElement('span');
 
-const se1 = SugarElement.fromDom(e1);
+// wrapping
+const se1: SugarElement<Element> = SugarElement.fromDom(e1);
+
+// unwrapping
+const e2: Element = se1.dom();
+
+/*
+Pretty simple so far.
+
+Now, above, we used `document.createElement`. We want to use Sugar functions everywhere, so we should do this instead:
+ */
+
+const se2: SugarElement<Element> = SugarElement.fromTag('span');
+
+// or
+
+const se3: SugarElement<Element> = SugarElement.fromTag('span', document);
+
+/*
+It's useful to be able to pass in a document parameter to this function, since we're often dealing with iframes as well
+as the main document.
+
+TODO: Use SugarElement's fromHtml and fromText functions to create a few elements.
+ */
+
+
+/*
+We often have to traverse from an element to its relatives. The Traverse module has useful functions for this.
+ */
+() => {
+  const parent: SugarElement<Element> = SugarElement.fromTag('div');
+  const kid: SugarElement<Element> = SugarElement.fromTag('span');
+  Insert.append(parent, kid);
+
+  const parent2 = Traverse.parent(kid);
+
+// TODO: inspect the type of Traverse.parent and explain why that type was used.
+// Answer:
+}
+
+
+
+() => {
+  const parent: SugarElement<Element> = SugarElement.fromTag('div');
+  const kid1: SugarElement<Element> = SugarElement.fromTag('span');
+  const kid2: SugarElement<Element> = SugarElement.fromTag('span');
+  Insert.append(parent, kid1);
+  Insert.append(parent, kid2);
+
+  // TODO: starting at kid1, find kid2
+
+  // TODO: starting at kid2, find kid1
+
+  // TODO: starting at parent, find both kids
+}
 
