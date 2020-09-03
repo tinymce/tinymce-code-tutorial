@@ -1,5 +1,8 @@
 import { Fun, Option as Optional } from "@ephox/katamari";
 
+// TODO: remove when we upgrade this tutorial to TinyMCE 5
+import { console } from '@ephox/dom-globals';
+
 /*
 Functional programming is about programming in functions. Functions in the mathematical sense. "Pure" functions.
 

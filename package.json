@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/tinymce/tinymce-code-tutorial#readme",
   "dependencies": {
+    "@ephox/dom-globals": "^3.9.5",
     "@ephox/katamari": "^6.1.2",
     "@ephox/sugar": "^6.1.3"
   },

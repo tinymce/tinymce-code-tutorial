@@ -1,4 +1,8 @@
 import { Option as Optional } from '@ephox/katamari';
+
+// TODO: remove when we upgrade this tutorial to TinyMCE 5
+import { Element, console, ChildNode } from '@ephox/dom-globals';
+
 /*
 Optional
 

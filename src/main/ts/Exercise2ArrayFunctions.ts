@@ -1,5 +1,8 @@
 import { Arr, Option as Optional } from '@ephox/katamari';
 
+// TODO: remove when we upgrade this tutorial to TinyMCE 5
+import { console } from '@ephox/dom-globals';
+
 /*
 Katamari is our library for general-purpose functions and FP basics.
 Its array module "Arr" is very handy, so let's explore it.
