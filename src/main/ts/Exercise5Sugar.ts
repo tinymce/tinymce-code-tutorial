@@ -68,7 +68,7 @@ We often have to traverse from an element to its relatives. The Traverse module 
 () => {
   const parent: SugarElement<Element> = SugarElement.fromTag('div');
   const kid1: SugarElement<Element> = SugarElement.fromTag('span');
-  const kid2: SugarElement<Element> = SugarElement.fromTag('span');
+  const kid2: SugarElement<Element> = SugarElement.fromTag('div');
   Insert.append(parent, kid1);
   Insert.append(parent, kid2);
 
@@ -77,5 +77,7 @@ We often have to traverse from an element to its relatives. The Traverse module 
   // TODO: starting at kid2, find kid1
 
   // TODO: starting at parent, find both kids
+
+  // TODO: kid2 grew up - give it its own child node
 }
 
