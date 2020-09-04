@@ -1,0 +1,10 @@
+Ideas for more exercises:
+
+Millie suggested:
+Basic “how to set up custom UI” exercises. We do it occasionally for actual development, but we do it a lot for
+support cases, creating demos, etc. And I think it would be a good introduction to the wider concepts of Alloy and such.
+E.g. custom toolbar buttons are in https://www.tiny.cloud/docs/ui-components/toolbarbuttons/ and
+https://www.tiny.cloud/docs/ui-components/typesoftoolbarbuttons/. And menu items are at
+https://www.tiny.cloud/docs/ui-components/menuitems/
+
+
