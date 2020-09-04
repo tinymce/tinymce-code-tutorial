@@ -1,6 +1,6 @@
 import { Assert, UnitTest } from "@ephox/bedrock-client";
 import { Option as Optional, OptionInstances } from '@ephox/katamari';
-import * as Ex from '../../main/ts/Exercise3Optional';
+import * as Ex from '../../main/ts/Part2Ex3Optional';
 
 const tOption = OptionInstances.tOption;
 

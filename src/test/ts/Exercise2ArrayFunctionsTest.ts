@@ -1,5 +1,5 @@
 import {Assert, UnitTest} from "@ephox/bedrock-client";
-import * as Ex from '../../main/ts/Exercise2ArrayFunctions';
+import * as Ex from '../../main/ts/Part2Ex2ArrayFunctions';
 
 UnitTest.test('runEach1', () => {
   Ex.runEach1();

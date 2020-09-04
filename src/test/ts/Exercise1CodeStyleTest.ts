@@ -1,5 +1,5 @@
 import { Assert, UnitTest } from '@ephox/bedrock-client';
-import * as CodeStyle from '../../main/ts/Exercise1CodeStyle';
+import * as CodeStyle from '../../main/ts/Part2Ex1';
 
 type Boundz = CodeStyle.Boundz;
 
