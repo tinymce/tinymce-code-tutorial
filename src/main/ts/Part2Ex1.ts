@@ -16,6 +16,10 @@ Let's model the x,y of the top-left and bottom-right corners.
 */
 export interface Boundz {
   // TODO: add fields: x1, y1, x2, y2
+  readonly x1: number,
+  readonly y1: number,
+  readonly x2: number,
+  readonly y2: number
 }
 
 /*
@@ -27,10 +31,8 @@ We tell tsc to transpile to ES5, so IE works.
 Notice also that we have an explicit return type. This lets the compiler check that our
 code matches the type signature.
 */
-export const width = (b: Boundz): number =>
-  /* TODO */ -1;
-
-// TODO implement height function
+export const width = (b: Boundz): number => b.x2 - b.x1;
+export const height = (b: Boundz): number => b.y2 - b.y1;
 
 /*
 3. Compiling.
