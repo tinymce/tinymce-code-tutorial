@@ -1,4 +1,4 @@
-import { Fun, Option as Optional } from "@ephox/katamari";
+import { Arr, Fun, Option as Optional } from "@ephox/katamari";
 
 // TODO: remove when we upgrade this tutorial to TinyMCE 5
 import { console } from '@ephox/dom-globals';
@@ -86,15 +86,20 @@ const switchMode = (m: Mode): void => {
   // pretend that something useful happens here
 }
 
-const nextMode = (m: Mode): void => {
+const nextMode = (m: Mode): Mode => {
   if (m === 'code') {
-    switchMode('design');
+    return 'design';
   } else if (m === 'design') {
-    switchMode('markdown');
+    return 'markdown';
   } else {
-    switchMode('code');
+    return 'code';
   }
 };
+
+const getNextMode = (m: Mode): void => {
+  switchMode(nextMode(m));
+}
+
 
 
 /*
@@ -124,11 +129,18 @@ const getOrElse1 = <A> (oa: Optional<A>, other: A): A =>
 
 // TODO: write a version of getOrElse1 using Fun.identity.
 
+const getOrElse2 = <A> (oa: Optional<A>, other: A): A => {
+  return oa.fold(
+    () => other,
+    Fun.identity
+  )
+}
+
 // TODO: What happens if you map the identity function over an Optional?
-// Answer: ...
+// Answer: The value stored in the optional will be returned in the case of a Optional.some(), otherwise it will not be run and Optional.none() will return
 
 // TODO: What happens if you map the identity function over an Array?
-// Answer: ...
+// Answer: You get an new, identical, array back
 
 /*
 In FP, we use a lot of little functions like identity, that seem insignificant on their own, but they come in handy
@@ -151,7 +163,13 @@ So, constant ignores whatever is passed for the B parameter, and just returns th
 Again, this looks familiar from our getOrElse1 function above.
 
 TODO: rewrite getOrElse1 using both Fun.identity and the "constant" function defined above.
- */
+*/
+
+const getOrElse3 = <A> (oa: Optional<A>, other: A): A =>
+  oa.fold(
+    Fun.constant(other),
+    Fun.identity
+  );
 
 
 /*
@@ -168,9 +186,12 @@ TODO: don't just take my word for it - use katamari's Fun.constant in you getOrE
 
 // TODO: Write a function that takes an array of numbers and replaces each value with 9.
 
+const numbersToNine = (arr: number[]): number[] =>
+    Arr.map(arr, Fun.constant(9));
+
 
 // TODO: In the previous question, what's the *same* between the input and output values
-// Answer:
+// Answer: The length of the array
 
 
 /*
@@ -221,8 +242,10 @@ signature and handling for n-ary functions. Your rule-of-thumb is to use Fun.com
 */
 
 // TODO: use Fun.compose1 to write a function that doubles a number twice
+const doubleNumTwice = (num: number): number =>
+  Fun.compose1(dbl, dbl)(num);
 
 // TODO: Rewrite this function to use a single map call and function composition
 const dblOs = (oa: Optional<number>): Optional<string> =>
-  oa.map(dbl).map(String);
+  oa.map(Fun.compose1(dbl, dbl)).map(String);
 
