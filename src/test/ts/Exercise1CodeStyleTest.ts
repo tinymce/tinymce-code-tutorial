@@ -30,7 +30,8 @@ UnitTest.test('width', () => {
   const b: Boundz = ({ x1: 3, y1: 4, x2: 7, y2: 8 });
   Assert.eq('Width', 4, CodeStyle.width(b));
 
-  // TODO: write another test case for width
+  const b2: Boundz = ({ x1: 1, y1: 0, x2: 10, y2: 9});
+  Assert.eq('Width of b2', 9, CodeStyle.width(b2));
 });
 
 /*
@@ -41,6 +42,10 @@ In this case, we'll call UnitTest.test again, to write a test for 'height'
 
  */
 // TODO: write a simple test case for height
+UnitTest.test('height', () => {
+  const b: Boundz = ({ x1: 3, y1: 3, x2: 7, y2: 8 });
+  Assert.eq('Height', 5, CodeStyle.height(b));
+});
 
 /*
 4. Test output
@@ -52,6 +57,6 @@ TODO Correct the test and run it again.
 
  */
 
-// UnitTest.test('failing test', () => {
-//   Assert.eq('oops', { a: 1, b: 2 }, { a: 1, b: 7, c: 8 });
-// });
+UnitTest.test('failing test', () => {
+  Assert.eq('oops', { a: 1, b: 7, c: 8 }, { a: 1, b: 7, c: 8 });
+});
