@@ -1,7 +1,7 @@
 import { Element as SugarElement, Document as SugarDocument, Traverse, Insert } from '@ephox/sugar';
 
 // TODO: remove when we upgrade this tutorial to TinyMCE 5
-import { Element, document } from '@ephox/dom-globals';
+import { Element, document, Text } from '@ephox/dom-globals';
 
 /*
 Sugar
@@ -48,6 +48,11 @@ as the main document.
 TODO: Use SugarElement's fromHtml and fromText functions to create a few elements.
  */
 
+const createSomeElements = (): void => {
+  const form: SugarElement<Element> = SugarElement.fromHtml('<form></form>');
+  const input: SugarElement<Text> = SugarElement.fromText('Some<>Cool</>HTML=Characters');
+};
+
 
 /*
 We often have to traverse from an element to its relatives. The Traverse module has useful functions for this.
@@ -60,7 +65,7 @@ We often have to traverse from an element to its relatives. The Traverse module 
   const parent2 = Traverse.parent(kid);
 
 // TODO: inspect the type of Traverse.parent and explain why that type was used.
-// Answer:
+// Answer: The parent of a child could be of any Node type
 }
 
 
@@ -73,11 +78,16 @@ We often have to traverse from an element to its relatives. The Traverse module 
   Insert.append(parent, kid2);
 
   // TODO: starting at kid1, find kid2
+  Traverse.nextSibling(kid1);
 
   // TODO: starting at kid2, find kid1
+  Traverse.prevSibling(kid2);
 
   // TODO: starting at parent, find both kids
+  Traverse.children(parent)
 
   // TODO: kid2 grew up - give it its own child node
+  const frogKid: SugarElement<Element> = SugarElement.fromTag('acronym');
+  Insert.append(kid2, frogKid);
 }
 
