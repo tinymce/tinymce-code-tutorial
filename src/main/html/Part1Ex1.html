@@ -9,7 +9,7 @@
 
   TODO Head over to https://www.tiny.cloud/ and sign up for an API key. Replace the 'no-api-key' with your api key in the below script tag.
   -->
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script src="https://cdn.tiny.cloud/1/lfkhbg4pu0ugxsflp73n0drgulk7bys4yvq1yto3y4jabe5b/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
 
@@ -32,7 +32,7 @@ TODO In the below script tag, instantiate TinyMCE editors in the below
 -->
 <textarea class="editorSet"></textarea>
 <textarea class="editorSet"></textarea>
-<script></script>
+<script>tinymce.init({ selector: '.editorSet' });</script>
 
 
 <!--
@@ -54,6 +54,20 @@ TODO Instantiate a TinyMCE editor with no menu bar, no status bar, and toolbar b
 
 Note: you'll need to add some plugins for these to work.
 -->
+<br/>
+<br/>
+<br/>
+
+<textarea class="deep-end"></textarea>
+<script>
+    tinymce.init({
+        selector: '.deep-end',
+        menubar: '',
+        statusbar: false,
+        plugins: 'table fullscreen code',
+        toolbar: 'bold | table | code | fullscreen'
+    });
+</script>
 
 
 </body>
