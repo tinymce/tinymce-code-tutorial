@@ -44,6 +44,9 @@ export const myFrogs: Frog[] = [
 
 export const runEach2 = (): void => {
   // TODO: Use Arr.each and console.log to print the name of each frog
+  Arr.each(myFrogs, (frog: Frog) => {
+      console.log(frog.name)
+  });
 };
 
 /*
@@ -69,9 +72,12 @@ export const runMap2 = (xs: number[]): string[] =>
 // TODO: Return the frog's names and check it by running
 // yarn bedrock-auto -b chrome-headless -f src/test/ts/Exercise2ArrayFunctionsTest.ts
 export const frogNames = (fs: Frog[]): string[] =>
-  [];
+    Arr.map(fs, (frog: Frog) => frog.name);
 
 // TODO: Return the frog's ages
+export const frogAges = (fs: Frog[]): number[] =>
+    Arr.map(fs, (frog: Frog) => frog.age);
+
 // TODO: Write a test for this in Exercise2ArrayFunctionsTest
 
 /*
@@ -87,11 +93,11 @@ export const evens = (xs: number[]): number[] =>
 // TODO: Write a function that returns all the frogs that ribbit
 // TODO: Run the provided test to check your answer.
 export const ribbitting = (frogs: Frog[]): Frog[] =>
-  []
+  Arr.filter(frogs, (frog: Frog) => frog.ribbits);
 
 // TODO: Write a function that returns all frogs aged 8 or older
 export const olderFrogs = (frogs: Frog[]): Frog[] =>
-  []
+  Arr.filter(frogs, (frog: Frog) => frog.age > 8)
 
 /*
 5. Arr.exists
@@ -100,8 +106,12 @@ Arr.exists returns true if there is one or more element that matches a predicate
  */
 
 // TODO: Write a function that returns true if there's one or more ribbiting frogs
+export const atLeastOneRibbiter = (frogs: Frog[]): boolean =>
+  Arr.exists(frogs, (frog: Frog) => frog.ribbits)
 
 // TODO: Write a function that takes an array of numbers, and returns true if there are any negative numbers
+export const atLeastOneNegative = (numbers: number[]): boolean =>
+  Arr.exists(numbers, (n: number) => n < 0)
 
 /*
 6. Arr.bind
@@ -114,7 +124,7 @@ This behaviour of running map then flatten is why this function is sometimes cal
 TODO: Write a function that takes a list of strings, each string containing a comma-separated list of values, and returns all of the values as an array.
  */
 export const splitCsvs = (csvs: string[]): string[] =>
-  []
+  Arr.bind(csvs, (csv: string) => csv.split(','));
 
 /*
 7. Arr.find

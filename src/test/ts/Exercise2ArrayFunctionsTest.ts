@@ -10,7 +10,7 @@ UnitTest.test('frog names', () => {
 });
 
 UnitTest.test('frog ages', () => {
-  // TODO: write a test for your frog ages function
+  Assert.eq('frog ages', [ 3, 4, 1, 10 ], Ex.frogAges(Ex.myFrogs));
 });
 
 UnitTest.test('ribbitting frogs', () => {
@@ -24,6 +24,44 @@ UnitTest.test('older frogs', () => {
   Assert.eq('older frogs', [
     { name: 'quietfrog', ribbits: false, age: 10 }
   ], Ex.olderFrogs(Ex.myFrogs))
+});
+
+UnitTest.test('at least one ribbiting frog', () => {
+  Assert.eq(
+    'no ribbiters',
+    false,
+    Ex.atLeastOneRibbiter([
+        { name: 'frog1', ribbits: false, age: 3 },
+        { name: 'frog2', ribbits: false, age: 4 },
+        { name: 'loudfrog', ribbits: false, age: 1 },
+        { name: 'quietfrog', ribbits: false, age: 10 },
+    ]),
+  );
+
+  Assert.eq(
+    'one ribbiter',
+    true,
+    Ex.atLeastOneRibbiter([
+        { name: 'frog1', ribbits: false, age: 3 },
+        { name: 'frog2', ribbits: false, age: 4 },
+        { name: 'loudfrog', ribbits: true, age: 1 },
+        { name: 'quietfrog', ribbits: false, age: 10 },
+    ]),
+  );
+});
+
+UnitTest.test('at least one negative number', () => {
+  Assert.eq(
+    'no negatives',
+    false,
+    Ex.atLeastOneNegative([0, 5, 10, 100]),
+  );
+
+  Assert.eq(
+    'one negative',
+    true,
+    Ex.atLeastOneNegative([0, 5, -10, 100]),
+  );
 });
 
 UnitTest.test('csvs', () => {
