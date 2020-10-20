@@ -58,7 +58,7 @@ We often have to traverse from an element to its relatives. The Traverse module 
 
 // TODO: inspect the type of Traverse.parent and explain why that type was used.
 // Answer:
-}
+};
 
 
 
@@ -76,5 +76,5 @@ We often have to traverse from an element to its relatives. The Traverse module 
   // TODO: starting at parent, find both kids
 
   // TODO: kid2 grew up - give it its own child node
-}
+};
 
