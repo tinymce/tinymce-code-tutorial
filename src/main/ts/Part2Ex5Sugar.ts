@@ -1,7 +1,4 @@
-import { Element as SugarElement, Document as SugarDocument, Traverse, Insert } from '@ephox/sugar';
-
-// TODO: remove when we upgrade this tutorial to TinyMCE 5
-import { Element, document } from '@ephox/dom-globals';
+import { SugarElement, SugarDocument, Traverse, Insert } from '@ephox/sugar';
 
 /*
 Sugar
@@ -27,7 +24,7 @@ const e1: Element = document.createElement('span');
 const se1: SugarElement<Element> = SugarElement.fromDom(e1);
 
 // unwrapping
-const e2: Element = se1.dom();
+const e2: Element = se1.dom;
 
 /*
 Pretty simple so far.

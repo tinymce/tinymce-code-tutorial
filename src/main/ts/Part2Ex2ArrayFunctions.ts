@@ -1,7 +1,4 @@
-import { Arr, Option as Optional } from '@ephox/katamari';
-
-// TODO: remove when we upgrade this tutorial to TinyMCE 5
-import { console } from '@ephox/dom-globals';
+import { Arr, Optional } from '@ephox/katamari';
 
 /*
 Katamari is our library for general-purpose functions and FP basics.
