@@ -1,7 +1,4 @@
-import { Fun, Option as Optional } from "@ephox/katamari";
-
-// TODO: remove when we upgrade this tutorial to TinyMCE 5
-import { console } from '@ephox/dom-globals';
+import { Arr, Fun, Optional } from "@ephox/katamari";
 
 /*
 Functional programming is about programming in functions. Functions in the mathematical sense. "Pure" functions.
@@ -83,8 +80,8 @@ TODO: Extract a pure function for the logic hiding in this (impure) function
 type Mode = 'code' | 'design' | 'markdown';
 
 const switchMode = (m: Mode): void => {
-  // pretend that something useful happens here
-}
+  // pretend that something useful happens here that causes a side effect
+};
 
 const nextMode = (m: Mode): void => {
   if (m === 'code') {
@@ -141,7 +138,7 @@ You can find this as Fun.constant in katamari.
 One way of writing it is below:
  */
 
-const constant = <A, B> (a: A) => (b: B) => a;
+const constant = <A> (a: A) => (...args: unknown[]): A => a;
 
 const always3 = constant(3);
 

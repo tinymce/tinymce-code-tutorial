@@ -1,7 +1,4 @@
-import { Arr, Option as Optional } from '@ephox/katamari';
-
-// TODO: remove when we upgrade this tutorial to TinyMCE 5
-import { console } from '@ephox/dom-globals';
+import { Arr, Optional } from '@ephox/katamari';
 
 /*
 Katamari is our library for general-purpose functions and FP basics.
@@ -12,7 +9,7 @@ Its array module "Arr" is very handy, so let's explore it.
 We don't write loops if we can help it. Instead, we go up a level, and call functions that do the looping for us.
 The simplest of these is 'each' which just iterates.
 
-TODO: Run the followind code using this command:
+TODO: Run the following code using this command:
 yarn bedrock-auto -b chrome-headless -f src/test/ts/Exercise2ArrayFunctionsTest.ts
  */
 
@@ -87,11 +84,11 @@ export const evens = (xs: number[]): number[] =>
 // TODO: Write a function that returns all the frogs that ribbit
 // TODO: Run the provided test to check your answer.
 export const ribbitting = (frogs: Frog[]): Frog[] =>
-  []
+  [];
 
 // TODO: Write a function that returns all frogs aged 8 or older
 export const olderFrogs = (frogs: Frog[]): Frog[] =>
-  []
+  [];
 
 /*
 5. Arr.exists
@@ -114,7 +111,7 @@ This behaviour of running map then flatten is why this function is sometimes cal
 TODO: Write a function that takes a list of strings, each string containing a comma-separated list of values, and returns all of the values as an array.
  */
 export const splitCsvs = (csvs: string[]): string[] =>
-  []
+  [];
 
 /*
 7. Arr.find

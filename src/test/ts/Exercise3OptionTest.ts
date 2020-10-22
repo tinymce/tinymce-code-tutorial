@@ -1,15 +1,15 @@
 import { Assert, UnitTest } from "@ephox/bedrock-client";
-import { Option as Optional, OptionInstances } from '@ephox/katamari';
+import { Optional, OptionalInstances } from '@ephox/katamari';
 import * as Ex from '../../main/ts/Part2Ex3Optional';
 
-const tOption = OptionInstances.tOption;
+const tOptional = OptionalInstances.tOptional;
 
 UnitTest.test('getProtocol', () => {
-  Assert.eq('simple https', Optional.some('https'), Ex.getProtocol('https://frog.com'), tOption());
-  Assert.eq('simple http', Optional.some('https'), Ex.getProtocol('http://frog.com'), tOption());
-  Assert.eq('no protocol 1', Optional.none<string>(), Ex.getProtocol('frog.com'), tOption());
-  Assert.eq('no protocol 2', Optional.none<string>(), Ex.getProtocol('://frog.com'), tOption());
-  Assert.eq('malformed protocol', Optional.none<string>(), Ex.getProtocol('3ttp://frog.com'), tOption());
+  Assert.eq('simple https', Optional.some('https'), Ex.getProtocol('https://frog.com'), tOptional());
+  Assert.eq('simple http', Optional.some('http'), Ex.getProtocol('http://frog.com'), tOptional());
+  Assert.eq('no protocol 1', Optional.none<string>(), Ex.getProtocol('frog.com'), tOptional());
+  Assert.eq('no protocol 2', Optional.none<string>(), Ex.getProtocol('://frog.com'), tOptional());
+  Assert.eq('malformed protocol', Optional.none<string>(), Ex.getProtocol('3ttp://frog.com'), tOptional());
 });
 
 UnitTest.test('toPositiveInteger', () => {

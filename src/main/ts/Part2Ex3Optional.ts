@@ -1,7 +1,4 @@
-import { Option as Optional } from '@ephox/katamari';
-
-// TODO: remove when we upgrade this tutorial to TinyMCE 5
-import { Element, console, ChildNode } from '@ephox/dom-globals';
+import { Optional } from '@ephox/katamari';
 
 /*
 Optional
@@ -19,7 +16,7 @@ value in all cases. Some examples:
 
 There are many ways of representing these "empty" cases, including:
 - returning a special value, e.g. empty string, empty array, NaN
-- returining null or undefined
+- returning null or undefined
 - throwing an exception
 
 In TinyMCE, we use a different approach. We represent these scenarios with a data type called "Optional".
@@ -88,7 +85,7 @@ export const message = (e: Optional<string>): string =>
 // TODO: Implement a function that takes an Optional<T> for any type T. Return true if it's some, and false if it's none.
 const trueIfSome = <T> (x: T): Optional<T> => {
   throw new Error("TODO");
-}
+};
 
 /*
 The last function you implemented is already part of the Optional type, and is called isSome().
@@ -102,7 +99,7 @@ export const unsafeStuff = (e: Optional<string>): void => {
   if (e.isSome()) {
     console.log(e.getOrDie()); // AVOID
   }
-}
+};
 
 /*
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -117,10 +114,10 @@ export const unsafeStuff = (e: Optional<string>): void => {
 
 A common way to handle an Optional value is to provide a default value if in the case of none.
 
-You can do this with fold, but getOrElse is a shortcut.
+You can do this with fold, but getOr is a shortcut.
 */
 
-// TODO: Using getOrElse, take an Optional<{age: string}> and turn it into an {age: string}, using a default value of 0.
+// TODO: Using getOr, take an Optional<{age: string}> and turn it into an {age: string}, using a default value of 0.
 
 // TODO: Write the same function using fold
 
