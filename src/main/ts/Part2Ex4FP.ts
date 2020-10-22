@@ -138,7 +138,7 @@ You can find this as Fun.constant in katamari.
 One way of writing it is below:
  */
 
-const constant = <A> (a: A) => (...args: any[]): A => a;
+const constant = <A> (a: A) => (...args: unknown[]): A => a;
 
 const always3 = constant(3);
 
