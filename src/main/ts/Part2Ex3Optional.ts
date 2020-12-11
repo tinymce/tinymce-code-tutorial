@@ -83,7 +83,7 @@ export const message = (e: Optional<string>): string =>
 // TODO: Implement a function using fold, that takes an Optional<number>. If it's some, double it. If it's none, return 0;
 
 // TODO: Implement a function that takes an Optional<T> for any type T. Return true if it's some, and false if it's none.
-const trueIfSome = <T> (x: T): Optional<T> => {
+const trueIfSome = <T> (x: Optional<T>): boolean  => {
   throw new Error("TODO");
 };
 
