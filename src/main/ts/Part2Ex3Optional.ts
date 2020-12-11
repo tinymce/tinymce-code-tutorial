@@ -147,7 +147,7 @@ Some examples, then some exercises:
 
 const x: Optional<string> = Optional.some(3).map((x) => String(x)); // returns Optional.some("3")
 
-const y: Optional<string> = Optional.none<number>().map((x) => String(x)); // returns Optional.<string>none()
+const y: Optional<string> = Optional.none<number>().map((x) => String(x)); // returns Optional.none<string>()
 
 // TODO: Write a function that takes an Optional<number> and adds 3 to the number
 
