@@ -32,7 +32,7 @@ const parseIntOpt = (s: string): Optional<number> => {
   return Number.isNaN(n) ? Optional.some(n) : Optional.none();
 };
 
-const toPositiveInteger = (n: number): Optional<number> =>
+export const toPositiveInteger = (n: number): Optional<number> =>
   n > 0 ? Optional.some(n) : Optional.none();
 
 // TODO: create a function which takes a string and returns some if the string is non-empty
