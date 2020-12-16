@@ -138,12 +138,12 @@ You can find this as Fun.constant in katamari.
 One way of writing it is below:
  */
 
-const constant = <A> (a: A) => (...args: unknown[]): A => a; // there is no B parameter here
+const constant = <A> (a: A) => (...args: unknown[]): A => a;
 
 const always3 = constant(3);
 
 /*
-So, constant ignores whatever is passed for the B parameter, and just returns the A.
+So, constant ignores whatever are passed for input parameters, and just returns the A.
 
 Again, this looks familiar from our getOrElse1 function above.
 
@@ -154,7 +154,7 @@ TODO: rewrite getOrElse1 using both Fun.identity and the "constant" function def
 /*
 Now, katamari's Fun.constant is slightly different to ours above:
 
-const constant = <A, B> (a: A) => (b: B) => a; // ours
+const constant = <A> (a: A) => (...args: unknown[]): A => a; // ours
 const constant = <A> (a: A) => () => a;        // katamari's
 
 In most languages, this would be make the two incompatible. However, TypeScript is a bit more lenient and lets us
