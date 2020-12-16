@@ -143,7 +143,7 @@ const constant = <A> (a: A) => (...args: unknown[]): A => a;
 const always3 = constant(3);
 
 /*
-So, constant ignores whatever are passed for input parameters, and just returns the A.
+So, constant ignores whatever is passed for input parameters, and just returns the A.
 
 Again, this looks familiar from our getOrElse1 function above.
 
@@ -222,4 +222,3 @@ signature and handling for n-ary functions. Your rule-of-thumb is to use Fun.com
 // TODO: Rewrite this function to use a single map call and function composition
 const dblOs = (oa: Optional<number>): Optional<string> =>
   oa.map(dbl).map(String);
-
