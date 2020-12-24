@@ -152,15 +152,7 @@ TODO: rewrite getOrElse1 using both Fun.identity and the "constant" function def
 
 
 /*
-Now, katamari's Fun.constant is slightly different to ours above:
-
-const constant = <A> (a: A) => (...args: unknown[]): A => a; // ours
-const constant = <A> (a: A) => () => a;        // katamari's
-
-In most languages, this would be make the two incompatible. However, TypeScript is a bit more lenient and lets us
-use the second form everywhere the first form is expected.
-
-TODO: don't just take my word for it - use katamari's Fun.constant in you getOrElse and see if it compiles.
+TODO: use katamari's Fun.constant in your getOrElse and see if it compiles.
  */
 
 // TODO: Write a function that takes an array of numbers and replaces each value with 9.
