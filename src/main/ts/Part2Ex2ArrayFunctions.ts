@@ -27,9 +27,9 @@ Let's set up some dummy test data to talk about frogs, and write some code about
  */
 
 export interface Frog {
-  readonly name: string,
-  readonly ribbits: boolean,
-  readonly age: number
+  readonly name: string;
+  readonly ribbits: boolean;
+  readonly age: number;
 }
 
 export const myFrogs: Frog[] = [
@@ -61,7 +61,7 @@ export const runMap1 = (xs: number[]): number[] =>
 
 // prepend a string to each element
 export const runMap2 = (xs: number[]): string[] =>
-  Arr.map(xs, (x) => "the number is " + 1);
+  Arr.map(xs, (x) => "the number is " + x);
 
 // TODO: Return the frog's names and check it by running
 // yarn bedrock-auto -b chrome-headless -f src/test/ts/Exercise2ArrayFunctionsTest.ts

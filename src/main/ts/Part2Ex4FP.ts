@@ -143,7 +143,7 @@ const constant = <A> (a: A) => (...args: unknown[]): A => a;
 const always3 = constant(3);
 
 /*
-So, constant ignores whatever is passed for the B parameter, and just returns the A.
+So, constant ignores whatever is passed for input parameters, and just returns the A.
 
 Again, this looks familiar from our getOrElse1 function above.
 
@@ -152,15 +152,7 @@ TODO: rewrite getOrElse1 using both Fun.identity and the "constant" function def
 
 
 /*
-Now, katamari's Fun.constant is slightly different to ours above:
-
-const constant = <A, B> (a: A) => (b: B) => a; // ours
-const constant = <A> (a: A) => () => a;        // katamari's
-
-In most languages, this would be make the two incompatible. However, TypeScript is a bit more lenient and lets us
-use the second form everywhere the first form is expected.
-
-TODO: don't just take my word for it - use katamari's Fun.constant in you getOrElse and see if it compiles.
+TODO: use katamari's Fun.constant in your getOrElse and see if it compiles.
  */
 
 // TODO: Write a function that takes an array of numbers and replaces each value with 9.
@@ -222,4 +214,3 @@ signature and handling for n-ary functions. Your rule-of-thumb is to use Fun.com
 // TODO: Rewrite this function to use a single map call and function composition
 const dblOs = (oa: Optional<number>): Optional<string> =>
   oa.map(dbl).map(String);
-

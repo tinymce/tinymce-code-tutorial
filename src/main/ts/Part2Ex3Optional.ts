@@ -32,7 +32,7 @@ const parseIntOpt = (s: string): Optional<number> => {
   return Number.isNaN(n) ? Optional.some(n) : Optional.none();
 };
 
-const toPositiveInteger = (n: number): Optional<number> =>
+export const toPositiveInteger = (n: number): Optional<number> =>
   n > 0 ? Optional.some(n) : Optional.none();
 
 // TODO: create a function which takes a string and returns some if the string is non-empty
@@ -83,7 +83,7 @@ export const message = (e: Optional<string>): string =>
 // TODO: Implement a function using fold, that takes an Optional<number>. If it's some, double it. If it's none, return 0;
 
 // TODO: Implement a function that takes an Optional<T> for any type T. Return true if it's some, and false if it's none.
-const trueIfSome = <T> (x: T): Optional<T> => {
+const trueIfSome = <T> (x: Optional<T>): boolean  => {
   throw new Error("TODO");
 };
 
@@ -147,7 +147,7 @@ Some examples, then some exercises:
 
 const x: Optional<string> = Optional.some(3).map((x) => String(x)); // returns Optional.some("3")
 
-const y: Optional<string> = Optional.none<number>().map((x) => String(x)); // returns Optional.<string>none()
+const y: Optional<string> = Optional.none<number>().map((x) => String(x)); // returns Optional.none<string>()
 
 // TODO: Write a function that takes an Optional<number> and adds 3 to the number
 
