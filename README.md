@@ -1,4 +1,4 @@
-# Tinymce Code Tutorial
+# TinyMCE Code Tutorial
 
 This repo is a tutorial in some of the programming concepts and libraries that we use in TinyMCE. We'll be covering a bunch of topics, including:
 
