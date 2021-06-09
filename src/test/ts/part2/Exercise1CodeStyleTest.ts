@@ -1,6 +1,6 @@
-import { Assert, describe, it, UnitTest } from '@ephox/bedrock-client';
+import { describe, it } from '@ephox/bedrock-client';
 import { assert } from 'chai';
-import * as CodeStyle from '../../main/ts/Part2Ex1';
+import * as CodeStyle from '../../../main/ts/Part2Ex1';
 
 type Boundz = CodeStyle.Boundz;
 
@@ -11,10 +11,10 @@ Bedrock lets us easily run js tests across different browsers.
 1. Running tests with bedrock
 
 To test this file with bedrock, run:
-yarn bedrock-auto -b chrome-headless -f src/test/ts/Exercise1CodeStyleTest.ts
+yarn bedrock-auto -b chrome-headless -f src/test/ts/part2/Exercise1CodeStyleTest.ts
 
 If you want to run this in a full browser, try:
-yarn bedrock-auto -b chrome -f src/test/ts/Exercise1CodeStyleTest.ts
+yarn bedrock-auto -b chrome -f src/test/ts/part2/Exercise1CodeStyleTest.ts
 
 TODO: Run bedrock in both modes shown above.
 

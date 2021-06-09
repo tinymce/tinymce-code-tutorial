@@ -4,7 +4,6 @@ import { Optional } from '@ephox/katamari';
 Optional
 
 NOTE: In TinyMCE 5.4 and earlier, this type is known as Option.
-This codebase currently uses an old version, but we're renaming the import to match the new name.
 
 Programming is all about writing functions to compute values. But quite often we have functions that can't return a
 value in all cases. Some examples:
@@ -92,7 +91,7 @@ The last function you implemented is already part of the Optional type, and is c
 There's a corresponding isNone().
 
 In some VERY LIMITED SITUATIONS you can use isSome() and then the UNSAFE getOrDie() function.
-It's acceptible to do this in tests, or where nested folding is incredibly cumbersome.
+It's acceptable to do this in tests, or where nested folding is incredibly cumbersome.
  */
 
 export const unsafeStuff = (e: Optional<string>): void => {
@@ -102,16 +101,6 @@ export const unsafeStuff = (e: Optional<string>): void => {
 };
 
 /*
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+
-+ Aside: But you said we used "static" functions, not methods on objects!
-+
-+ Yeah, mostly we do. But Optional is from a time before we pushed that concept very hard.
-+ At some point, we intend to replace Optional's API with something fully static.
-+
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
 A common way to handle an Optional value is to provide a default value if in the case of none.
 
 You can do this with fold, but getOr is a shortcut.
@@ -136,8 +125,8 @@ Let's explore this by converting Optionals to and from Arrays.
 /*
 One of the most useful functions on Optional is "map". We say this function "maps a function over the Optional".
 
-If the Optional is some, it runs the function over the some and returns the result as a "some".
-If the Optional. is none, it returns none.
+If the Optional is some, it runs the function over the value inside and returns the result as a "some".
+If the Optional is none, it returns none.
 
 Above, we talked about how an Optional is like an array restricted to 0 or 1 elements, so mapping over an Optional
 is very similar to mapping over an array (which we did in Exercise 2).

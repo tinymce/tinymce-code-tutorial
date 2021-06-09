@@ -1,6 +1,6 @@
 import { describe, it } from '@ephox/bedrock-client';
 import { assert } from 'chai';
-import * as Ex from '../../main/ts/Part2Ex2ArrayFunctions';
+import * as Ex from '../../../main/ts/Part2Ex2ArrayFunctions';
 
 describe('Exercise2ArrayFunctionsTest', () => {
   it('runEach1', () => {

@@ -2,6 +2,29 @@
 # yarn lockfile v1
 
 
+"@ephox/agar@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/@ephox/agar/-/agar-5.3.1.tgz#e9bdb09c13d79acaf2b48df8e3786e35856633cf"
+  integrity sha512-KpcBXTcz/ijvlb/IrhJd99d7HQDsxuHYBwgeEPXwfzsVChzua3DARLrMaUblaeBXNuHnJw7rZduVUAw6k8Zv7Q==
+  dependencies:
+    "@ephox/bedrock-client" "^11.0.0"
+    "@ephox/bedrock-common" "^11.0.0"
+    "@ephox/jax" "^5.0.7"
+    "@ephox/sand" "^4.0.7"
+    "@ephox/sugar" "^7.1.3"
+    "@ephox/wrap-jsverify" "^2.0.1"
+    "@ephox/wrap-promise-polyfill" "^2.2.0"
+    "@ephox/wrap-sizzle" "^4.0.0"
+    tslib "^2.0.0"
+
+"@ephox/bedrock-client@^11.0.0":
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/@ephox/bedrock-client/-/bedrock-client-11.3.0.tgz#2c499fe9461616147b3066c426f9d3de5fc46b1c"
+  integrity sha512-lZihjG8qLtttOYM0MkDa13Tm58WlN0CfA5eiiqZ3RGjYGarsvcr4xkDzj5iJZx1RLDBt2Ba9w622Fje+RA7jZQ==
+  dependencies:
+    "@ephox/bedrock-common" "^11.3.0"
+    "@ephox/dispute" "^1.0.3"
+
 "@ephox/bedrock-client@^11.1.1":
   version "11.1.1"
   resolved "https://registry.yarnpkg.com/@ephox/bedrock-client/-/bedrock-client-11.1.1.tgz#a240da955302a5d0d1842ead7116d8ecbf9f20c9"
@@ -9,6 +32,13 @@
   dependencies:
     "@ephox/bedrock-common" "^11.1.1"
     "@ephox/dispute" "^1.0.3"
+
+"@ephox/bedrock-common@^11.0.0", "@ephox/bedrock-common@^11.3.0":
+  version "11.3.0"
+  resolved "https://registry.yarnpkg.com/@ephox/bedrock-common/-/bedrock-common-11.3.0.tgz#d6cdb9ef5a69efee48feda084bc4fb7a6daad848"
+  integrity sha512-ruOUs5bvB4qur7DVMrivFGv8a0bDEbcdZoD9afJ8UK21dO2t8ifAt6Z4jFzFLfaJrH/15EpiCe7Qby7jZcTifA==
+  dependencies:
+    diff "^4.0.1"
 
 "@ephox/bedrock-common@^11.1.1":
   version "11.1.1"
@@ -73,6 +103,14 @@
   dependencies:
     tslib "^2.0.0"
 
+"@ephox/jax@^5.0.7":
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/@ephox/jax/-/jax-5.0.7.tgz#0eccf168f9acf7f87533e8a2dc0f72c3abb26316"
+  integrity sha512-jU8ddcnX5b/ugn0cEaJTwRzXoFA3Wp75872bJ8bh4/vj7ChGjRna2JFHvtBRLFRD9WQvDKpGaVusnghimtbwWQ==
+  dependencies:
+    "@ephox/katamari" "^7.2.1"
+    tslib "^2.0.0"
+
 "@ephox/katamari@^7.0.1", "@ephox/katamari@^7.2.1":
   version "7.2.1"
   resolved "https://registry.yarnpkg.com/@ephox/katamari/-/katamari-7.2.1.tgz#ed94878bcc237958dc35321326462f59c6ff2e44"
@@ -80,6 +118,18 @@
   dependencies:
     "@ephox/dispute" "^1.0.3"
     "@ephox/wrap-promise-polyfill" "^2.2.0"
+    tslib "^2.0.0"
+
+"@ephox/mcagar@^6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@ephox/mcagar/-/mcagar-6.1.1.tgz#02724c710c35715c8a42784b5be491b0d2c1635b"
+  integrity sha512-a3PWRWkWtHN/IkjGky/qgsUe8FElcfaXhdWESBc8NDh64V8cRmhPo1jSqS1nronCBCvHh/JmzLvcsBVQnlHvWg==
+  dependencies:
+    "@ephox/agar" "^5.3.1"
+    "@ephox/katamari" "^7.2.1"
+    "@ephox/sand" "^4.0.7"
+    "@ephox/sugar" "^7.1.3"
+    "@ephox/wrap-jsverify" "^2.0.1"
     tslib "^2.0.0"
 
 "@ephox/sand@^4.0.7":
@@ -90,7 +140,7 @@
     "@ephox/katamari" "^7.2.1"
     tslib "^2.0.0"
 
-"@ephox/sugar@^7.0.1":
+"@ephox/sugar@^7.0.1", "@ephox/sugar@^7.1.3":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@ephox/sugar/-/sugar-7.1.3.tgz#4589af2ebdb6d6afd4abd7098ccb2ed5a0d07efe"
   integrity sha512-42bAqOpZwtZQOGatJk7E3zQ1y0bKYcz7s9WimD3k8j6nEw48RUFGYiwXMOgkgGZ/OXAHQhk3ePe95qIItajb5w==
@@ -98,10 +148,20 @@
     "@ephox/katamari" "^7.2.1"
     "@ephox/sand" "^4.0.7"
 
+"@ephox/wrap-jsverify@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ephox/wrap-jsverify/-/wrap-jsverify-2.0.1.tgz#8984b292eeab3bd570eab773541650d257793d4d"
+  integrity sha512-RSSsUFBV9uVUPzmCRvYXZBEZhVahYXs/j0JVgCy0CrbS98nV60BeYd97QB37sr05Lv7haLWzKf9XAcVAO7M8Ng==
+
 "@ephox/wrap-promise-polyfill@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@ephox/wrap-promise-polyfill/-/wrap-promise-polyfill-2.2.0.tgz#ea11e0a88320b5096dfed6249e169621c9853f7d"
   integrity sha512-bTvZa0VEBPtCbcl05lYDjMre1WruTRXReCo8Yp2JrOnkf2PK8jgzBrOYPplbjgXvh6ToPqK2wiaeeBApYYgUSQ==
+
+"@ephox/wrap-sizzle@^4.0.0":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@ephox/wrap-sizzle/-/wrap-sizzle-4.0.1.tgz#84193c357de60a47fa5d65ec181801bc5b8d576c"
+  integrity sha512-zztEqdwnHGsYNbMj9IsA6oOjluHy41Zpw69kBcc/qrEOv0CR1K6/2ojCKG0VYd36lYd2RaDjxyCPqO7X+KPXlA==
 
 "@sindresorhus/is@^4.0.0":
   version "4.0.1"
@@ -5206,6 +5266,11 @@ timers-browserify@^2.0.4:
   integrity sha512-9phl76Cqm6FhSX9Xe1ZUAMLtm1BLkKj2Qd5ApyWkXzsMRaA7dgr81kf4wJmQf/hAvg8EEyJxDo3du/0KlhPiKQ==
   dependencies:
     setimmediate "^1.0.4"
+
+tinymce@^5.8.1:
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.8.1.tgz#f6ace70e47cf6b5b0a63f52cf38e4ae04a35ba58"
+  integrity sha512-1zGXdZplWQafstlC7sri0ttCgMagsiXDc9N3I8JNrPOsWAeTfq4AAJWZoxsQBYn8gYcuPu/WzMKG5SoJjxI1VA==
 
 to-arraybuffer@^1.0.0:
   version "1.0.1"
