@@ -1,35 +1,38 @@
-import {Assert, UnitTest} from "@ephox/bedrock-client";
+import { describe, it } from '@ephox/bedrock-client';
+import { assert } from 'chai';
 import * as Ex from '../../main/ts/Part2Ex2ArrayFunctions';
 
-UnitTest.test('runEach1', () => {
-  Ex.runEach1();
-});
+describe('Exercise2ArrayFunctionsTest', () => {
+  it('runEach1', () => {
+    Ex.runEach1();
+  });
 
-UnitTest.test('frog names', () => {
-  Assert.eq('frog names', [ 'frog1', 'frog2', 'loudfrog', 'quietfrog' ], Ex.frogNames(Ex.myFrogs));
-});
+  it('frog names', () => {
+    assert.deepEqual(Ex.frogNames(Ex.myFrogs), [ 'frog1', 'frog2', 'loudfrog', 'quietfrog' ], 'frog names');
+  });
 
-UnitTest.test('frog ages', () => {
-  // TODO: write a test for your frog ages function
-});
+  it('frog ages', () => {
+    // TODO: write a test for your frog ages function
+  });
 
-UnitTest.test('ribbitting frogs', () => {
-  Assert.eq('ribbitting', [
-    { name: 'frog1', ribbits: true, age: 3 },
-    { name: 'loudfrog', ribbits: true, age: 1 }
-  ], Ex.ribbitting(Ex.myFrogs));
-});
+  it('ribbitting frogs', () => {
+    assert.deepEqual(Ex.ribbitting(Ex.myFrogs), [
+      { name: 'frog1', ribbits: true, age: 3 },
+      { name: 'loudfrog', ribbits: true, age: 1 }
+    ], 'ribbitting');
+  });
 
-UnitTest.test('older frogs', () => {
-  Assert.eq('older frogs', [
-    { name: 'quietfrog', ribbits: false, age: 10 }
-  ], Ex.olderFrogs(Ex.myFrogs))
-});
+  it('older frogs', () => {
+    assert.deepEqual(Ex.olderFrogs(Ex.myFrogs), [
+      { name: 'quietfrog', ribbits: false, age: 10 }
+    ], 'older frogs');
+  });
 
-UnitTest.test('csvs', () => {
-  Assert.eq('empty array', [], Ex.splitCsvs([]));
-  Assert.eq('single string', ['a'], Ex.splitCsvs(['a']));
-  Assert.eq('single csv string', ['a', 'b'], Ex.splitCsvs(['a,b']));
-  Assert.eq('several strings', ['a', 'b'], Ex.splitCsvs(['a', 'b']));
-  Assert.eq('several csv strings', ['a', 'b', 'd', 'a'], Ex.splitCsvs(['a', 'b,d,a']));
+  it('csvs', () => {
+    assert.deepEqual(Ex.splitCsvs([]), [], 'empty array');
+    assert.deepEqual(Ex.splitCsvs(['a']), ['a'], 'single string');
+    assert.deepEqual(Ex.splitCsvs(['a,b']), ['a', 'b'], 'single csv string');
+    assert.deepEqual(Ex.splitCsvs(['a', 'b']), ['a', 'b'], 'several strings');
+    assert.deepEqual(Ex.splitCsvs(['a', 'b,d,a']), ['a', 'b', 'd', 'a'], 'several csv strings');
+  });
 });

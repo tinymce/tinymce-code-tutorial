@@ -1,20 +1,21 @@
-import { Assert, UnitTest } from "@ephox/bedrock-client";
-import { Optional, OptionalInstances } from '@ephox/katamari';
+import { describe, it } from '@ephox/bedrock-client';
+import { assert } from 'chai';
 import * as Ex from '../../main/ts/Part2Ex3Optional';
 
-const tOptional = OptionalInstances.tOptional;
 
-UnitTest.test('getProtocol', () => {
-  Assert.eq('simple https', Optional.some('https'), Ex.getProtocol('https://frog.com'), tOptional());
-  Assert.eq('simple http', Optional.some('http'), Ex.getProtocol('http://frog.com'), tOptional());
-  Assert.eq('no protocol 1', Optional.none<string>(), Ex.getProtocol('frog.com'), tOptional());
-  Assert.eq('no protocol 2', Optional.none<string>(), Ex.getProtocol('://frog.com'), tOptional());
-  Assert.eq('malformed protocol', Optional.none<string>(), Ex.getProtocol('3ttp://frog.com'), tOptional());
-});
+describe('Exercise3OptionTest', () => {
+  it('getProtocol', () => {
+    assert.equal(Ex.getProtocol('https://frog.com').getOrDie(), 'https');
+    assert.equal(Ex.getProtocol('http://frog.com').getOrDie(), 'http');
+    assert.isTrue(Ex.getProtocol('frog.com').isNone(), 'no protocol should be found');
+    assert.isTrue(Ex.getProtocol('://frog.com').isNone(), 'no protocol should be found');
+    assert.isTrue(Ex.getProtocol('3ttp://frog.com').isNone(), 'malformed protocol should not be registered');
+  });
 
-UnitTest.test('toPositiveInteger', () => {
-  // TODO: write a few test cases
-  // NOTE the examples above - due to how Optional is implemented, we can't compare values as JS objects/arrays/values,
-  // and we need to pass in the tOption() equality value
-
+  it('toPositiveInteger', () => {
+    // TODO: write a few test cases
+    // DON'T MERGE THIS IN UNTIL THIS HAS BEEN RESOLVED: HOW DO WE DO THAT vvv WITH CHAI
+    // NOTE the examples above - due to how Optional is implemented, we can't compare values as JS objects/arrays/values,
+    // and we need to pass in the tOption() equality value
+  });
 });

@@ -1,4 +1,5 @@
-import { Assert, UnitTest } from '@ephox/bedrock-client';
+import { Assert, describe, it, UnitTest } from '@ephox/bedrock-client';
+import { assert } from 'chai';
 import * as CodeStyle from '../../main/ts/Part2Ex1';
 
 type Boundz = CodeStyle.Boundz;
@@ -23,35 +24,38 @@ Note: if you have changed the code, you will want to run `yarn build` beforehand
 
 We start with a definition like this...
  */
-UnitTest.test('width', () => {
-  // ... and then we write some test cases
-  // Format is Assert.eq('comment', expected, actual)
+describe('Exercise1CodeStyleTests', () => {
+  it('width', () => {
+    // ... and then we write some test cases
+    // Format is Assert.eq('comment', expected, actual)
 
-  const b: Boundz = ({ x1: 3, y1: 4, x2: 7, y2: 8 });
-  Assert.eq('Width', 4, CodeStyle.width(b));
+    const b: Boundz = ({ x1: 3, y1: 4, x2: 7, y2: 8 });
+    assert.deepEqual(CodeStyle.width(b), 4, 'Width');
 
-  // TODO: write another test case for width
+    // TODO: write another test case for width
+  });
+
+  /*
+  3. Testing 'height' function
+
+  We can have multiple UnitTest.test calls in one file. This can be useful to separate tests.
+  In this case, we'll call UnitTest.test again, to write a test for 'height'
+
+   */
+  // TODO: write a simple test case for height
+
+  /*
+  4. Test output
+
+  The below test should fail.
+
+  TODO remove the ".skip" to enable this test. Run it using the commands above.
+  Notice that the output shows a diff.
+  TODO Correct the test and run it again.
+
+   */
+
+  it.skip('failing test', () => {
+    assert.deepEqual({ a: 1, b: 2 }, { a: 1, b: 7, c: 8 });
+  });
 });
-
-/*
-3. Testing 'height' function
-
-We can have multiple UnitTest.test calls in one file. This can be useful to separate tests.
-In this case, we'll call UnitTest.test again, to write a test for 'height'
-
- */
-// TODO: write a simple test case for height
-
-/*
-4. Test output
-
-The below test should fail.
-
-TODO Run it using the commands above. Notice that the output shows a diff.
-TODO Correct the test and run it again.
-
- */
-
-// UnitTest.test('failing test', () => {
-//   Assert.eq('oops', { a: 1, b: 2 }, { a: 1, b: 7, c: 8 });
-// });
