@@ -9,7 +9,7 @@
 
   TODO Head over to https://www.tiny.cloud/ and sign up for an API key. Replace the 'no-api-key' with your api key in the below script tag.
   -->
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script src="https://cdn.tiny.cloud/1/j1x3xh4cc9z6k78vh6s6g4bil8doncremvl8gpa0umx30i5t/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
 
@@ -24,15 +24,15 @@ element, and a TinyMCE editor appears where the element was:
 <script>tinymce.init({ selector: '#editor1' });</script>
 
 <!--
-If you inspect the DOM in your browser, you'll notice that the textarea has been hidden, and editor dom elements created
-beside the textarea.
-
-Since a selector can match multiple elements, you can use tinymce.init to create multiple editors.
-TODO In the below script tag, instantiate TinyMCE editors in the below
+  If you inspect the DOM in your browser, you'll notice that the textarea has been hidden, and editor dom elements created
+  beside the textarea.
+  
+  Since a selector can match multiple elements, you can use tinymce.init to create multiple editors.
+  TODO In the below script tag, instantiate TinyMCE editors in the below
 -->
 <textarea class="editorSet"></textarea>
 <textarea class="editorSet"></textarea>
-<script></script>
+<script>tinymce.init({ selector: '.editorSet' });</script>
 
 
 <!--
@@ -54,6 +54,17 @@ TODO Instantiate a TinyMCE editor with no menu bar, no status bar, and toolbar b
 
 Note: you'll need to add some plugins for these to work.
 -->
+
+<textarea class="customised"></textarea>
+<script>
+tinymce.init({ 
+  selector: '.customised',
+  menubar: '',
+  statusbar: false,
+  toolbar: 'bold table fullscreen code',
+  plugins: 'table fullscreen code'
+});
+</script>
 
 
 </body>
