@@ -117,7 +117,7 @@ A common way to handle an Optional value is to provide a default value if in the
 You can do this with fold, but getOr is a shortcut.
 */
 
-// TODO: Using getOr, take an Optional<{age: string}> and turn it into an {age: string}, using a default value of 0.
+// TODO: Using getOr, take an Optional<{age: number}> and turn it into an {age: number}, using a default value of 0.
 
 // TODO: Write the same function using fold
 
