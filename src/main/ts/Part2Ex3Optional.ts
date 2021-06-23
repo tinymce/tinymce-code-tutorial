@@ -137,7 +137,7 @@ Let's explore this by converting Optionals to and from Arrays.
 One of the most useful functions on Optional is "map". We say this function "maps a function over the Optional".
 
 If the Optional is some, it runs the function over the some and returns the result as a "some".
-If the Optional. is none, it returns none.
+If the Optional is none, it returns none.
 
 Above, we talked about how an Optional is like an array restricted to 0 or 1 elements, so mapping over an Optional
 is very similar to mapping over an array (which we did in Exercise 2).
