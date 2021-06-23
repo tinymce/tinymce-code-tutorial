@@ -93,6 +93,11 @@ const nextMode = (m: Mode): void => {
   }
 };
 
+export const nextMode1 = (m: Mode): Mode => {
+  if (m === 'code') return 'design'
+  if (m === 'design') return 'markdown'
+  return 'code'
+}
 
 /*
 The identity function.
@@ -111,7 +116,7 @@ const identity = <A> (a: A): A => a;
  on Optional. You can write a similar function like this:
 */
 
-const getOrElse1 = <A> (oa: Optional<A>, other: A): A =>
+export const getOrElse1 = <A> (oa: Optional<A>, other: A): A =>
   oa.fold(
     () => other,
     (a) => a
@@ -120,12 +125,17 @@ const getOrElse1 = <A> (oa: Optional<A>, other: A): A =>
 // Hang on - that looks familiar. The function we pass as the "some" case is the identity function.
 
 // TODO: write a version of getOrElse1 using Fun.identity.
+export const getOrElse2 = <A> (oa: Optional<A>, other: A): A =>
+  oa.fold(
+    () => other,
+    (a) => Fun.identity(a)
+  );
 
 // TODO: What happens if you map the identity function over an Optional?
-// Answer: ...
+// Answer: Returns some or none.
 
 // TODO: What happens if you map the identity function over an Array?
-// Answer: ...
+// Answer: Returns the array.
 
 /*
 In FP, we use a lot of little functions like identity, that seem insignificant on their own, but they come in handy
@@ -149,17 +159,22 @@ Again, this looks familiar from our getOrElse1 function above.
 
 TODO: rewrite getOrElse1 using both Fun.identity and the "constant" function defined above.
  */
-
+export const getOrElse3 = <A> (oa: Optional<A>, other: A): A =>
+  oa.fold(
+    Fun.constant(other),
+    (a) => Fun.identity(a)
+  );
 
 /*
 TODO: use katamari's Fun.constant in your getOrElse and see if it compiles.
  */
 
-// TODO: Write a function that takes an array of numbers and replaces each value with 9.
 
+// TODO: Write a function that takes an array of numbers and replaces each value with 9.
+export const replaceWith9 = (numbers: Array<number>): Array<number> => Arr.map(numbers, Fun.constant(9))
 
 // TODO: In the previous question, what's the *same* between the input and output values
-// Answer:
+// Answer: No matter what number you have in the array it's gonna be replaced by 9.
 
 
 /*
@@ -210,7 +225,10 @@ signature and handling for n-ary functions. Your rule-of-thumb is to use Fun.com
 */
 
 // TODO: use Fun.compose1 to write a function that doubles a number twice
+export const doubleTwice = Fun.compose1(dbl, dbl);
 
 // TODO: Rewrite this function to use a single map call and function composition
-const dblOs = (oa: Optional<number>): Optional<string> =>
+export const dblOs = (oa: Optional<number>): Optional<string> =>
   oa.map(dbl).map(String);
+
+export const dblOs1 = (oa: Optional<number>): Optional<string> => oa.map(Fun.compose1(String, dbl));
