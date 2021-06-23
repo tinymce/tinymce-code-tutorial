@@ -66,13 +66,15 @@ UnitTest.test('getAgeFold', () => {
 
 UnitTest.test('convertToArray', () => {
   Assert.eq('should return empty array', [], Ex.convertToArray(Optional.none()));
-  Assert.eq('should return array', ['foo'], Ex.convertToArray(Optional.some('foo')));
+  Assert.eq('should return array foo', ['foo'], Ex.convertToArray(Optional.some('foo')));
+  Assert.eq('should return array 1', [1], Ex.convertToArray(Optional.some(1)));
 });
 
 UnitTest.test('fromArray', () => {
-  Assert.eq('should return none', Optional.none<string>(), Ex.fromArray([]), tOptional());
-  Assert.eq('should return some', Optional.some('foo'), Ex.fromArray(['foo']), tOptional());
-  Assert.eq('should return some', Optional.some('foo'), Ex.fromArray(['foo', 'bar']), tOptional());
+  Assert.eq('should return none', Optional.none<never>(), Ex.fromArray([]), tOptional());
+  Assert.eq('should return some foo', Optional.some('foo'), Ex.fromArray(['foo']), tOptional());
+  Assert.eq('should return some 1', Optional.some(1), Ex.fromArray([1]), tOptional());
+  Assert.eq('should return some foo - arr length 2', Optional.some('foo'), Ex.fromArray(['foo', 'bar']), tOptional());
 });
 
 UnitTest.test('add3', () => {

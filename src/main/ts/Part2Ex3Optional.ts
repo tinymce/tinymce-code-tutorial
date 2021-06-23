@@ -141,12 +141,12 @@ Let's explore this by converting Optionals to and from Arrays.
  */
 
 // TODO: Write a function that converts an Optional<A> to an A[] for any type A.
-export const convertToArray = (o: Optional<string>): Array<string> => {
+export const convertToArray = <A> (o: Optional<A>): Array<A> => {
   return o.fold(() => [], (v) => [v])
 }
 
 // TODO: Write a function that converts an A[] to an Optional<A>. If the array has more than one element, only consider the first element.
-export const fromArray = (arr: Array<string>): Optional<string> => {
+export const fromArray = <A> (arr: Array<A>): Optional<A> => {
   return arr.length === 0 ? Optional.none() : Optional.some(arr[0]);
 }
 
