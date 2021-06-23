@@ -29,7 +29,7 @@ e.g.
  */
 const parseIntOpt = (s: string): Optional<number> => {
   const n = parseInt(s);
-  return Number.isNaN(n) ? Optional.some(n) : Optional.none();
+  return Number.isNaN(n) ? Optional.none() : Optional.some(n);
 };
 
 export const toPositiveInteger = (n: number): Optional<number> =>
