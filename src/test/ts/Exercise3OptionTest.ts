@@ -20,6 +20,8 @@ UnitTest.test('getProtocol', () => {
   Assert.eq('simple http', Optional.some('http'), Ex.getProtocol('http://frog.com'), tOptional());
   Assert.eq('no protocol 1', Optional.none<string>(), Ex.getProtocol('frog.com'), tOptional());
   Assert.eq('no protocol 2', Optional.none<string>(), Ex.getProtocol('://frog.com'), tOptional());
+  Assert.eq('no protocol 3', Optional.none<string>(), Ex.getProtocol('www.httpstest.com'), tOptional());
+  Assert.eq('no protocol 4', Optional.none<string>(), Ex.getProtocol('httpstest.example.com'), tOptional());
   Assert.eq('malformed protocol', Optional.none<string>(), Ex.getProtocol('3ttp://frog.com'), tOptional());
 });
 

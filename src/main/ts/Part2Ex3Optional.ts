@@ -43,8 +43,8 @@ export const nonEmpty = (s: string): Optional<string> => s.length > 0 ? Optional
 // You can use a regex.
 // Have a look at Exercise3OptionTest.ts for example input. Make sure the tests pass.
 export const getProtocol = (url: string): Optional<string> => {
-  const protocolMatch = url.match(/https|http/);
-  return protocolMatch ? Optional.some(protocolMatch[0]) : Optional.none();
+  const protocolMatch = url.match(/^(https|http):\/\//);
+  return protocolMatch !== null ? Optional.some(protocolMatch[1]) : Optional.none();
 };
 
 /*
