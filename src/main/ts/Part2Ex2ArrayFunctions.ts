@@ -1,5 +1,4 @@
 import { Arr, Optional } from '@ephox/katamari';
-import { forge } from '@ephox/katamari/lib/main/ts/ephox/katamari/api/Resolve';
 
 /*
 Katamari is our library for general-purpose functions and FP basics.

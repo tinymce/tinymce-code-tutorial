@@ -1,5 +1,4 @@
 import { Optional } from '@ephox/katamari';
-import { fold } from '@ephox/katamari/lib/main/ts/ephox/katamari/api/Maybes';
 
 /*
 Optional
