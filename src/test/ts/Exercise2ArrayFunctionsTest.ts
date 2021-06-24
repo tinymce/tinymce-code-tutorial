@@ -11,6 +11,7 @@ UnitTest.test('frog names', () => {
 
 UnitTest.test('frog ages', () => {
   // TODO: write a test for your frog ages function
+  Assert.eq('frog ages', [3, 4, 1, 10], Ex.frogAges(Ex.myFrogs));
 });
 
 UnitTest.test('ribbitting frogs', () => {
