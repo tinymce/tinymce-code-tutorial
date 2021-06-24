@@ -128,7 +128,7 @@ export const getOrElse1 = <A> (oa: Optional<A>, other: A): A =>
 export const getOrElse2 = <A> (oa: Optional<A>, other: A): A =>
   oa.fold(
     () => other,
-    (a) => Fun.identity(a)
+    Fun.identity
   );
 
 // TODO: What happens if you map the identity function over an Optional?
@@ -162,7 +162,7 @@ TODO: rewrite getOrElse1 using both Fun.identity and the "constant" function def
 export const getOrElse3 = <A> (oa: Optional<A>, other: A): A =>
   oa.fold(
     Fun.constant(other),
-    (a) => Fun.identity(a)
+    Fun.identity
   );
 
 /*
