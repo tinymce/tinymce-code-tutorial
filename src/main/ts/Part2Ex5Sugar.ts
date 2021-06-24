@@ -1,4 +1,4 @@
-import { SugarElement, SugarDocument, Traverse, Insert } from '@ephox/sugar';
+import { SugarElement, Traverse, Insert } from '@ephox/sugar';
 
 /*
 Sugar
@@ -71,17 +71,17 @@ We often have to traverse from an element to its relatives. The Traverse module 
   Insert.append(parent, kid2);
   
   // TODO: starting at kid1, find kid2
-  export const foundKid2 = Traverse.parent(kid1).getOrDie().dom.childNodes.item(1);
+  export const foundKid2 = Traverse.nextSibling(kid1);
   
   // TODO: starting at kid2, find kid1
-  export const foundKid1 = Traverse.parent(kid2).getOrDie().dom.childNodes.item(0);
+  export const foundKid1 = Traverse.prevSibling(kid2);
   
   // TODO: starting at parent, find both kids
-  export const foundKids = parent.dom.childNodes
+  export const foundKids = Traverse.children(parent);
   
   // TODO: kid2 grew up - give it its own child node
-  const kid3: SugarElement<Element> = SugarElement.fromTag('span');
+  export const kid3 = SugarElement.fromTag('span');
   Insert.append(kid2, kid3);
-  export const foundKid2Again = Traverse.parent(kid3).getOrDie();
+  export const foundKid2Again = Traverse.nextSibling(kid1);
 //};
 
