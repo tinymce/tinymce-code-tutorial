@@ -10,7 +10,7 @@ describe('Part3Ex3Test', () => {
 
   beforeEach(() => {
     // Fun fact, hook.editor() also works inside of before / beforeEach
-    // callbacks: as long as you declare the hook first.
+    // callbacks, as long as you declare the hook first.
 
     const editor = hook.editor();
     editor.setContent([
@@ -24,16 +24,16 @@ describe('Part3Ex3Test', () => {
     const editor = hook.editor();
 
     /*
-    Now we're going to talk about one of the scarier parts of editor
+    Now we're going to talk about one of the more complicated parts of editor
     development: selections.
 
     It's very rare you'll need to deal with moving the selection around early
     in your training, and make sure to chat with a senior dev about what you're
-    doing if you do need to. However, for a lot of tests its important to edit
+    doing if you do need to. However, for a lot of tests its important to change
     the selection, or make assertions based on it.
 
     Under most circumstances, you can think of the selection as two
-    nod/offset pairs. The node tells you where the selection starts (or ends)
+    node/offset pairs. The node tells you which DOM node the selection starts (or ends) in
     and the offset tells you how far into that node the selection starts (or
     ends). If your node is a HTMLElement, then the offset is going to tell you
     how many of the node's ChildNodes are before the selection endpoint. If

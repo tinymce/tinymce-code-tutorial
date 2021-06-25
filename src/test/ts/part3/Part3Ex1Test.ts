@@ -19,7 +19,7 @@ describe('Part3Ex1Test', () => {
     node_modules, we can avoid the script tag and the API key - in the docs for
     our customers we refer to this as "self-hosting"
      */
-    assert.isNotEmpty(tinymce.editors);
+    assert.isNotEmpty(tinymce.get());
   });
 
   /*
@@ -47,7 +47,7 @@ describe('Part3Ex1Test', () => {
     Let's create an element manually, and put it in the document body.
      */
     const element =
-      /* TODO: create a text area element using sugar */
+      /* TODO: create a textarea element using sugar */
       null as unknown as SugarElement<HTMLTextAreaElement>;
 
     Insert.append(SugarBody.body(), element);
@@ -89,7 +89,7 @@ describe('Part3Ex1Test', () => {
   // Now we need to clean up
   after(() => {
     // First, let's get rid of the editor
-    tinymce.editors[0].remove();
+    tinymce.get()[0].remove();
 
     // Second, let's get rid of the element that was holding the editor
     const element = SelectorFind.descendant(SugarBody.body(), '#remove-me-later');

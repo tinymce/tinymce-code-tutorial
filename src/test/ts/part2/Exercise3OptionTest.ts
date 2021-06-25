@@ -2,7 +2,6 @@ import { describe, it } from '@ephox/bedrock-client';
 import { assert } from 'chai';
 import * as Ex from '../../../main/ts/Part2Ex3Optional';
 
-
 describe('Exercise3OptionTest', () => {
   it('getProtocol', () => {
     assert.equal(Ex.getProtocol('https://frog.com').getOrDie(), 'https');
