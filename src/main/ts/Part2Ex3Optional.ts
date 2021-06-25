@@ -29,7 +29,7 @@ e.g.
  */
 const parseIntOpt = (s: string): Optional<number> => {
   const n = parseInt(s);
-  return Number.isNaN(n) ? Optional.some(n) : Optional.none();
+  return Number.isNaN(n) ? Optional.none() : Optional.some(n);
 };
 
 export const toPositiveInteger = (n: number): Optional<number> =>
@@ -117,7 +117,7 @@ A common way to handle an Optional value is to provide a default value if in the
 You can do this with fold, but getOr is a shortcut.
 */
 
-// TODO: Using getOr, take an Optional<{age: string}> and turn it into an {age: string}, using a default value of 0.
+// TODO: Using getOr, take an Optional<{age: number}> and turn it into an {age: number}, using a default value of 0.
 
 // TODO: Write the same function using fold
 
@@ -137,7 +137,7 @@ Let's explore this by converting Optionals to and from Arrays.
 One of the most useful functions on Optional is "map". We say this function "maps a function over the Optional".
 
 If the Optional is some, it runs the function over the some and returns the result as a "some".
-If the Optional. is none, it returns none.
+If the Optional is none, it returns none.
 
 Above, we talked about how an Optional is like an array restricted to 0 or 1 elements, so mapping over an Optional
 is very similar to mapping over an array (which we did in Exercise 2).
