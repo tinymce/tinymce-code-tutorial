@@ -19,3 +19,5 @@ describe('Exercise3OptionTest', () => {
     // and we need to pass in the tOption() equality value
   });
 });
+
+// TODO: Now that you have finished all the test files, try running all tests in the "part2" folder all using the `-d` argument in bedrock and specifying the parent directory.
