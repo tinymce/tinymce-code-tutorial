@@ -13,10 +13,8 @@ describe('Exercise3OptionTest', () => {
 
   it('toPositiveInteger', () => {
     // TODO: write a few test cases
-    // DON'T MERGE THIS IN UNTIL THIS HAS BEEN RESOLVED: HOW DO WE DO THAT vvv WITH CHAI
-    // NOTE the examples above - due to how Optional is implemented, we can't compare values as JS objects/arrays/values,
-    // and we need to pass in the tOption() equality value
   });
 });
 
-// TODO: Now that you have finished all the test files, try running all tests in the "part2" folder all using the `-d` argument in bedrock and specifying the parent directory.
+// TODO: Now that you have finished all the test files in this directory,
+// try running all tests in the "part2" folder all using the `-d` argument in bedrock and specifying the parent directory.

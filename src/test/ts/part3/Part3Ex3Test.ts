@@ -104,5 +104,7 @@ describe('Part3Ex3Test', () => {
       '<p>And some <strong>bolded</strong> content</p>',
       '<p><img src="https://http.cat/301.jpg" alt="A cat picture" /></p>'
     ].join('\n'));
+
+    // TODO: Write an assertion to test your changes (hint: TinyAssertions)
   });
 });
