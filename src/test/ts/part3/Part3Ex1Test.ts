@@ -68,10 +68,10 @@ describe('Part3Ex1Test', () => {
         run until the editor is ready. Let's wait for the "init" event to fire
         before we signify that we're ready for the tests to run.
 
-        This actually brings up a very important point - the window of time
-        between when setup is called and when the init event is fired is one you
-        need to be very careful during. Even though the editor exists, most of
-        its APIs and features won't work until after initialisation is finished.
+        This actually brings up a very important point - we need to be very careful
+        in the window of time between when setup is called and when the init event 
+        is fired is one. Even though the editor exists, most of its APIs and features 
+        won't work until after initialisation is finished.
 
         For some use-cases, specifying init_instance_callback is more useful.
         https://www.tiny.cloud/docs/configure/integration-and-setup/#init_instance_callback

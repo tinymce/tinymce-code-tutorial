@@ -33,13 +33,15 @@ describe('Part3Ex2Test', () => {
     // Now what?
     // Let's just make sure that the bold button we asked for is there
 
-    // the element containing the editor and all of its UI (TinyDom is another
-    // mcagar API, this one gets SugarElements out of editor things).
+    // TinyDom is another mcagar API that has various helper functions for
+    // getting TinyMCE DOM elements as SugarElements
+    // TinyDom.container(editor) returns the element that contains the editor and all of its UI
     const container = TinyDom.container(editor);
 
     // assert a bold button is in the container
-    // This is from the agar library, as it's a generic utility that isn't
-    // strictly editor-related
+    // UiFinder is from the agar library, as it's a generic utility that isn't
+    // TinyMCE-specific (that's why you have to pass in the scope to search
+    // for the selector in)
     UiFinder.exists(container, 'button[title="Bold"]');
   });
 
