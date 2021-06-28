@@ -5,7 +5,7 @@ import * as CodeStyle from '../../../main/ts/Part2Ex1';
 type Boundz = CodeStyle.Boundz;
 
 /*
-We run tests using the an internally developed test runner called Bedrock.
+We run tests using an internally developed test runner called Bedrock.
 Bedrock lets us easily run js tests across different browsers.
 
 1. Running tests with bedrock
