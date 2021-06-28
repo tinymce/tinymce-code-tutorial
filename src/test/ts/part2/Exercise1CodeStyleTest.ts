@@ -5,7 +5,7 @@ import * as CodeStyle from '../../../main/ts/Part2Ex1';
 type Boundz = CodeStyle.Boundz;
 
 /*
-We test using the Bedrock test library.
+We run tests using the an internally developed test runner called Bedrock.
 Bedrock lets us easily run js tests across different browsers.
 
 1. Running tests with bedrock
@@ -61,9 +61,9 @@ describe('Exercise1CodeStyleTests', () => {
 
   The below test should fail.
 
-  TODO remove the ".skip" to enable this test. Run it using the commands above.
+  TODO: remove the ".skip" to enable this test. Run it using the commands above.
   Notice that the output shows a diff.
-  TODO Correct the test and run it again.
+  TODO: Correct the test and run it again.
 
    */
 
