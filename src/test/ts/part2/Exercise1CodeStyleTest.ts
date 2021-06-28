@@ -26,8 +26,6 @@ yarn bedrock-auto -b chrome -f src/test/ts/part2/Exercise1CodeStyleTest.ts
 
 TODO: Run bedrock in all modes shown above.
 
-Note: if you have changed the code, you will want to run `yarn build` beforehand.
-
 2. Defining tests
 
 Bedrock aims to match the mocha BDD API style which uses describe, context and it.

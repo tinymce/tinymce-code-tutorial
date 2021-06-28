@@ -43,10 +43,9 @@ describe('Part3Ex3Test', () => {
     This concept is summed up really nicely by the builtin "Range" API exported
     by the browser. Let's create a Range object, and make sure it works.
      */
-    const range = document.createRange();
-
-    // TinyMCE also exposes this behaviour through the `dom` API
-    // editor.dom.createRng()
+    // TinyMCE also exposes this document.createRange() through the `dom` API
+    // this ensures the range object is using the same document as the editor
+    const range = editor.dom.createRng();
 
     const contentBody = TinyDom.body(editor);
     // Let's get the <p>And some <strong>bolded</strong> content</p>

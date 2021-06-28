@@ -17,8 +17,6 @@ describe('Part3Ex1Test', () => {
   const hook = TinyHooks.bddSetup<Editor>({
     // And then you put your settings in here
     toolbar: 'bold',
-    // No need to add a "setup" or "init_instance_callback" here unless you
-    // need one for the actual test you're writing.
   });
   /*
   NOTE: Even though we have assigned the result of our call to TinyHooks to a variable,
@@ -33,7 +31,7 @@ describe('Part3Ex1Test', () => {
 
   TODO: Take a look through Bedrock's docs and the BDD APIs available.
 
-  Bedrock's BDD docs:
+  McAgar's BDD docs:
   https://github.com/tinymce/tinymce/blob/develop/modules/mcagar/docs/bdd.md
 
   BDD APIs:
