@@ -1,67 +1,115 @@
-import { UiFinder } from '@ephox/agar';
-import { describe, it } from '@ephox/bedrock-client';
-import { TinyAssertions, TinyDom, TinyHooks } from '@ephox/mcagar';
+import { Cursors } from '@ephox/agar';
+import { beforeEach, describe, it } from '@ephox/bedrock-client';
+import { TinyAssertions, TinyDom, TinyHooks, TinySelections } from '@ephox/mcagar';
+import { Traverse } from '@ephox/sugar';
+import { assert } from 'chai';
 import { Editor } from 'tinymce';
 
-describe('Part3Ex2Test', () => {
-  /*
-  So you might have noticed that the code we had to write in exercise 1 was a
-  lot of effort. It also could be made nicer in a few ways:
+describe('Part3Ex3Test', () => {
+  const hook = TinyHooks.bddSetup<Editor>({ height: '100vh' });
 
-  - If the test fails, leave the editor on-screen so you can look at what went
-    wrong
-  - someone please help me think of cool things about TinyHooks before I merge
-  this
+  beforeEach(() => {
+    // Fun fact, hook.editor() also works inside of before / beforeEach
+    // callbacks, as long as you declare the hook first.
 
-  Enter the TinyHooks module, from mcagar (mc - Tiny[MC]E, agar - another
-  in-house testing library, more on that later). It lets you write the following.
-   */
-  const hook = TinyHooks.bddSetup<Editor>({
-    // And then you put your settings in here
-    toolbar: 'bold',
-    // No need to add a "setup" or "init_instance_callback" here unless you
-    // need one for the actual test you're writing.
+    const editor = hook.editor();
+    editor.setContent([
+      '<p>Here is a bit of content</p>',
+      '<p>And some <strong>bolded</strong> content</p>',
+      '<p><img src="https://http.cat/301.jpg" alt="A cat picture" /></p>'
+    ].join(''));
   });
 
-  it('looks like an editor', () => {
-    /*
-    You can use this hook object only inside a test (so that you know the before
-    callback has been run), and you use it like this.
-     */
+  it('selects content like an editor', () => {
     const editor = hook.editor();
 
-    // Now what?
-    // Let's just make sure that the bold button we asked for is there
+    /*
+    Now we're going to talk about one of the more complicated parts of editor
+    development: selections.
 
-    // TinyDom is another mcagar API that has various helper functions for
-    // getting TinyMCE DOM elements as SugarElements
-    // TinyDom.container(editor) returns the element that contains the editor and all of its UI
-    const container = TinyDom.container(editor);
+    It's very rare you'll need to deal with moving the selection around early
+    in your training, and make sure to chat with a senior dev about what you're
+    doing if you do need to. However, for a lot of tests its important to change
+    the selection, or make assertions based on it.
 
-    // assert a bold button is in the container
-    // UiFinder is from the agar library, as it's a generic utility that isn't
-    // TinyMCE-specific (that's why you have to pass in the scope to search
-    // for the selector in)
-    UiFinder.exists(container, 'button[title="Bold"]');
+    Under most circumstances, you can think of the selection as two
+    node/offset pairs. The node tells you which DOM node the selection starts (or ends) in
+    and the offset tells you how far into that node the selection starts (or
+    ends). If your node is a HTMLElement, then the offset is going to tell you
+    how many of the node's ChildNodes are before the selection endpoint. If
+    your node is a Text, then the offset is going to tell you how many
+    characters into the text your selection endpoint is.
+
+    This concept is summed up really nicely by the builtin "Range" API exported
+    by the browser. Let's create a Range object, and make sure it works.
+     */
+    const range = document.createRange();
+
+    // TinyMCE also exposes this behaviour through the `dom` API
+    // editor.dom.createRng()
+
+    const contentBody = TinyDom.body(editor);
+    // Let's get the <p>And some <strong>bolded</strong> content</p>
+    const paragraph = Traverse.child(contentBody, 1).getOrDie('Unable to find second child of editor body');
+    // And then get the <strong>bolded</strong> (child 0 would be the text node "And some ")
+    const strong = Traverse.child(paragraph, 1).getOrDie('Unable to find second child of paragraph');
+    // And finally let's get the text node "bolded"
+    const text = Traverse.child(strong, 0).getOrDie('Unable to find text inside strong element');
+
+    range.setStart(text.dom, 0);
+    range.setEnd(text.dom, 'bolded'.length);
+
+    editor.selection.setRng(range);
+
+    assert.equal(editor.selection.getContent(), 'bolded');
   });
 
-  it('has content like an editor', () => {
+  it('selects content like an editor, take II', () => {
+    const editor = hook.editor();
+    /*
+    Now in the last test, we put together a block of code that's a really good
+    teaching opportunity for another mcagar API. Here's the code in question
+
+    const contentBody = TinyDom.body(editor);
+    // Let's get the <p>And some <strong>bolded</strong> content</p>
+    const paragraph = Traverse.child(contentBody, 1).getOrDie('Unable to find second child of editor body');
+    // And then get the <strong>bolded</strong> (child 0 would be the text node "And some ")
+    const strong = Traverse.child(paragraph, 1).getOrDie('Unable to find second child of paragraph');
+    // And finally let's get the text node "bolded"
+    const text = Traverse.child(strong, 0).getOrDie('Unable to find text inside strong element');
+
+    And here's how you'd do all of this with an agar API.
+     */
+    const contentBody = TinyDom.body(editor);
+    const text = Cursors.follow(contentBody, [ 1, 1, 0 ]).getOrDie();
+    /*
+    Each number in this array represents a call to "Traverse.child(..., <number>)"
+    in a loop, walking down step by step from the container to the node you want to end on.
+
+    Then, to make things even simpler, we can use mcagar to do all of this
+    (get the editor body, walk down to the bottom node, create the range and set
+    the selection) in one go, like this.
+
+    https://github.com/tinymce/tinymce/blob/develop/modules/mcagar/docs/bdd.md#tinyselections
+     */
+    TinySelections.setSelection(editor, [ 1, 1, 0 ], 0, [ 1, 1, 0 ], 'bolded'.length);
+
+    assert.equal(editor.selection.getContent(), 'bolded');
+  });
+
+  it('operates on the selection', () => {
     const editor = hook.editor();
 
-    editor.setContent(/* TODO */ "<p>Hello world</p>");
+    // TODO: move the selection to around the words "a bit of"
 
-    /*
-    Anther useful module from mcagar, TinyAssertions is full of ways to make
-    sure that the content inside the editor is what you want it to be. Content
-    presence takes an object where the keys are CSS selectors, and the values
-    are numbers saying how many elements should match that selector inside the
-    editor.
+    // TODO: use an editor command to underline that content (https://www.tiny.cloud/docs/advanced/editor-command-identifiers/)
 
-    TODO: Edit the setContent call above to make this test pass.
-     */
-    TinyAssertions.assertContentPresence(editor, {
-      p: 2,
-      span: 1
-    });
+    TinyAssertions.assertContent(editor, [
+      '<p>Here is <span style="text-decoration: underline;">a bit of</span> content</p>',
+      '<p>And some <strong>bolded</strong> content</p>',
+      '<p><img src="https://http.cat/301.jpg" alt="A cat picture" /></p>'
+    ].join('\n'));
+
+    // TODO: Write an assertion to test your changes (hint: TinyAssertions)
   });
 });
