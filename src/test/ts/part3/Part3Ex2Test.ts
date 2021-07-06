@@ -81,6 +81,8 @@ describe('Part3Ex3Test', () => {
      */
     const contentBody = TinyDom.body(editor);
     const text = Cursors.follow(contentBody, [ 1, 1, 0 ]).getOrDie();
+    // Note that Cursors.follow only deals with DOM nodes, not offsets, and it uses the same node
+    // for both the selection start and end node
     /*
     Each number in this array represents a call to "Traverse.child(..., <number>)"
     in a loop, walking down step by step from the container to the node you want to end on.
