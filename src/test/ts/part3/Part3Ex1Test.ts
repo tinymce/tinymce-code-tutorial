@@ -93,7 +93,7 @@ describe('Part3Ex1Test', () => {
 
     // Second, let's get rid of the element that was holding the editor
     const element = SelectorFind.descendant(SugarBody.body(), '#remove-me-later');
-    // TODO: the following code won't work because element is an Optional.
+    // TODO: Fix the code below. It's not working because `element` is an Optional.
     // Remove.remove(element);
   });
 });
