@@ -23,7 +23,7 @@ Note: if you have changed the code, you will want to run `yarn build` beforehand
 2. Defining tests
 
 We start with a definition like this...
- */
+*/
 describe('Exercise1CodeStyleTests', () => {
   it('width', () => {
     // ... and then we write some test cases
@@ -38,24 +38,23 @@ describe('Exercise1CodeStyleTests', () => {
   /*
   3. Testing 'height' function
 
-  We can have multiple UnitTest.test calls in one file. This can be useful to separate tests.
-  In this case, we'll call UnitTest.test again, to write a test for 'height'
+  We can have multiple `it` calls in one file. This can be useful to separate tests.
+  In this case, we'll call `it` again, to write a test for 'height'
+  */
 
-   */
   // TODO: write a simple test case for height
 
   /*
   4. Test output
 
-  The below test should fail.
+  The test below should fail.
+  */
 
-  TODO remove the ".skip" to enable this test. Run it using the commands above.
-  Notice that the output shows a diff.
-  TODO Correct the test and run it again.
-
-   */
-
+  // TODO: remove the ".skip" to enable this test. Run it using the commands above. Notice that the output shows a diff.
+  
   it.skip('failing test', () => {
     assert.deepEqual({ a: 1, b: 2 }, { a: 1, b: 7, c: 8 });
   });
+
+  // TODO: Fix the test and run it again.
 });
