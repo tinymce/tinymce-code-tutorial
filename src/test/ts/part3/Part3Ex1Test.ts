@@ -62,7 +62,7 @@ describe('Part3Ex1Test', () => {
     editor.setContent(/* TODO */ "<p>Hello world</p>");
 
     /*
-    Anther useful module from mcagar, TinyAssertions is full of ways to make
+    Another useful module from mcagar, TinyAssertions is full of ways to make
     sure that the content inside the editor is what you want it to be. Content
     presence takes an object where the keys are CSS selectors, and the values
     are numbers saying how many elements should match that selector inside the
