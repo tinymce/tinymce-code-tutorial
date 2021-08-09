@@ -10,8 +10,8 @@ describe('Part3Ex2Test', () => {
 
   - If the test fails, leave the editor on-screen so you can look at what went
     wrong
-  - someone please help me think of cool things about TinyHooks before I merge
-  this
+  - Easier to set it up, settings is a JS object
+  - Grabbing the editor isntance is easy ride with the `hook.editor()` method
 
   Enter the TinyHooks module, from mcagar (mc - Tiny[MC]E, agar - another
   in-house testing library, more on that later). It lets you write the following.
@@ -46,10 +46,10 @@ describe('Part3Ex2Test', () => {
   it('has content like an editor', () => {
     const editor = hook.editor();
 
-    editor.setContent(/* TODO */ "<p>Hello world</p>");
+    editor.setContent(/* TODO: read below */ "<p>Hello world</p>");
 
     /*
-    Anther useful module from mcagar, TinyAssertions is full of ways to make
+    Another useful module from mcagar, TinyAssertions is full of ways to make
     sure that the content inside the editor is what you want it to be. Content
     presence takes an object where the keys are CSS selectors, and the values
     are numbers saying how many elements should match that selector inside the
