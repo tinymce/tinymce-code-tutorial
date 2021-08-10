@@ -20,6 +20,14 @@ Anything with a TODO is something you need to fill in.
 
 When you're finished a section, let your tutor know and they will review your code.
 
+The tutorial is in 3 parts. They are located:
+
+| Part | Location |
+| ---- | -------- |
+| 1 | `src/main/html` |
+| 2 | `src/main/ts` and `src/test/ts/part2` |
+| 3 | `src/test/ts/part3` |
+
 # Tips
 
 Follow the types.
