@@ -9,7 +9,7 @@
 
   TODO Head over to https://www.tiny.cloud/ and sign up for an API key. Replace the 'no-api-key' with your api key in the below script tag.
   -->
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script src="https://cdn.tiny.cloud/1/b6r7yu1n19ibkha4z0s4gdvt0l7z2mc3dzlnc780ep0uuzks/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
 
@@ -30,9 +30,12 @@ beside the textarea.
 Since a selector can match multiple elements, you can use tinymce.init to create multiple editors.
 TODO In the below script tag, instantiate TinyMCE editors in the below
 -->
-<textarea class="editorSet"></textarea>
-<textarea class="editorSet"></textarea>
-<script></script>
+<textarea id="editor2" class="editorSet"></textarea>
+<textarea id="editor3" class="editorSet"></textarea>
+<script>
+  tinymce.init({ selector: '#editor2' });
+  tinymce.init({ selector: '#editor3' });
+</script>
 
 
 <!--
@@ -54,7 +57,9 @@ TODO Instantiate a TinyMCE editor with no menu bar, no status bar, and toolbar b
 
 Note: you'll need to add some plugins for these to work.
 -->
-
+<h1>Custom Editor</h1>
+<textarea id="customEditor"></textarea>
+<script>tinymce.init({selector: "#customEditor", menubar: false, status: false, plugins: "fullscreen table code", toolbar: "bold table fullscreen code"})</script>
 
 </body>
 

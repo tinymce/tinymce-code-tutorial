@@ -79,7 +79,15 @@ TODO: Extract a pure function for the logic hiding in this (impure) function
 
 type Mode = 'code' | 'design' | 'markdown';
 
+const hasMode = (m: Mode): boolean => {
+  return m === 'code' || m === 'design' || m === 'markdown' ? true : false;
+}
+
 const switchMode = (m: Mode): void => {
+  const valid = hasMode(m);
+  if (valid) {
+    // do side effect
+  }
   // pretend that something useful happens here that causes a side effect
 };
 
@@ -120,12 +128,12 @@ const getOrElse1 = <A> (oa: Optional<A>, other: A): A =>
 // Hang on - that looks familiar. The function we pass as the "some" case is the identity function.
 
 // TODO: write a version of getOrElse1 using Fun.identity.
-
+export const getOrElse2 = <A> (oa: Optional<A>, other: A): A => oa.fold(() => other, Fun.identity);
 // TODO: What happens if you map the identity function over an Optional?
-// Answer: ...
+// Answer: Get the value of the Optional
 
 // TODO: What happens if you map the identity function over an Array?
-// Answer: ...
+// Answer: Get the value of each element in the array
 
 /*
 In FP, we use a lot of little functions like identity, that seem insignificant on their own, but they come in handy
@@ -149,17 +157,19 @@ Again, this looks familiar from our getOrElse1 function above.
 
 TODO: rewrite getOrElse1 using both Fun.identity and the "constant" function defined above.
  */
-
+export const getOrElse3 = <A> (oa: Optional<A>, other: A): A => oa.fold(constant(other), Fun.identity)
 
 /*
 TODO: use katamari's Fun.constant in your getOrElse and see if it compiles.
  */
+export const getOrElse4 = <A> (oa: Optional<A>, other: A): A => oa.fold(Fun.constant(other), Fun.identity)
 
 // TODO: Write a function that takes an array of numbers and replaces each value with 9.
+export const replaceElementWith9 = (items: number[]) => Optional.from(items).fold(Fun.constant([]), (items) => items.map(Fun.constant(9)));
 
 
 // TODO: In the previous question, what's the *same* between the input and output values
-// Answer:
+// Answer: They are the same type (number) and same number of elements??
 
 
 /*
@@ -210,7 +220,7 @@ signature and handling for n-ary functions. Your rule-of-thumb is to use Fun.com
 */
 
 // TODO: use Fun.compose1 to write a function that doubles a number twice
+export const dblX2: (x: number) => number = Fun.compose1(dbl, dbl);
 
 // TODO: Rewrite this function to use a single map call and function composition
-const dblOs = (oa: Optional<number>): Optional<string> =>
-  oa.map(dbl).map(String);
+export const dblOs = (oa: Optional<number>): Optional<string> => oa.map(Fun.compose1(String, dbl));

@@ -1,4 +1,5 @@
 import { Optional } from '@ephox/katamari';
+import { search } from '@ephox/sugar/lib/main/ts/ephox/sugar/api/dom/Focus';
 
 /*
 Optional
@@ -35,13 +36,19 @@ export const toPositiveInteger = (n: number): Optional<number> =>
   n > 0 ? Optional.some(n) : Optional.none();
 
 // TODO: create a function which takes a string and returns some if the string is non-empty
+export const isString = (s: string): Optional<string> => s ? Optional.some(s) : Optional.none();
 
 // TODO: create a function which takes a url as a string and returns the protocol part as an Optional.
 // The string may or may not actually have a protocol. For the protocol to be valid, it needs to be all alpha characters.
 // You can use a regex.
 // Have a look at Exercise3OptionTest.ts for example input. Make sure the tests pass.
 export const getProtocol = (url: string): Optional<string> => {
-  throw new Error("TODO");
+  let result = null;
+  if (url) {
+    result = url.match(/^http(s)?/);
+  }
+  
+  return result ? Optional.some(result[0]) : Optional.none();
 };
 
 /*
@@ -57,10 +64,13 @@ TODO: use Optional.from to implement the following DOM function
  */
 
 export const getNextSibling = (e: Element): Optional<ChildNode> => {
-  throw new Error("TODO");
+  return Optional.from(e ? e.nextSibling : null);
 };
 
 // TODO: use Optional.from to implement a similar wrapper for Element.getAttributeNode(string)
+export const getElementAttribute = (e: Element, attributeName: string): Optional<Attr> => {
+  return Optional.from(e && attributeName ? e.getAttributeNode(attributeName) : null)
+}
 
 /*
 How do we get data out of an Optional? Well, that's a bit tricky since there isn't always
@@ -80,11 +90,10 @@ export const message = (e: Optional<string>): string =>
   );
 
 // TODO: Implement a function using fold, that takes an Optional<number>. If it's some, double it. If it's none, return 0;
+export const doubleNumber = (n: Optional<number>): number => n.fold(() => 0, (n: number) => n * 2);
 
 // TODO: Implement a function that takes an Optional<T> for any type T. Return true if it's some, and false if it's none.
-const trueIfSome = <T> (x: Optional<T>): boolean  => {
-  throw new Error("TODO");
-};
+const trueIfSome = <T> (x: Optional<T>): boolean  => x.fold(() => false, () => true);
 
 /*
 The last function you implemented is already part of the Optional type, and is called isSome().
@@ -107,8 +116,10 @@ You can do this with fold, but getOr is a shortcut.
 */
 
 // TODO: Using getOr, take an Optional<{age: number}> and turn it into an {age: number}, using a default value of 0.
+export const toValueOr = (input: Optional<{age: number}>): {age: number} => input.getOr({age: 0});
 
 // TODO: Write the same function using fold
+export const toValueOrWithFold = (input: Optional<{age: number}>): {age: number} => input.fold(() => {return {age: 0};}, (input: {age: number}) => input );
 
 
 /*
@@ -118,9 +129,13 @@ Let's explore this by converting Optionals to and from Arrays.
  */
 
 // TODO: Write a function that converts an Optional<A> to an A[] for any type A.
-
+export const optionalToArray = <A>(input: Optional<A>): A[] => {
+  return input.isSome() ? input.toArray() : [];
+}
 // TODO: Write a function that converts an A[] to an Optional<A>. If the array has more than one element, only consider the first element.
-
+export const arrayToOptional = <A>(input: A[]): Optional<A> => {
+  return Array.isArray(input) && input.length > 0 ? Optional.some(input[0]) : Optional.none();
+}
 
 /*
 One of the most useful functions on Optional is "map". We say this function "maps a function over the Optional".
@@ -139,12 +154,14 @@ const x: Optional<string> = Optional.some(3).map((x) => String(x)); // returns O
 const y: Optional<string> = Optional.none<number>().map((x) => String(x)); // returns Optional.none<string>()
 
 // TODO: Write a function that takes an Optional<number> and adds 3 to the number
+export const add3 = (number: Optional<number>) => number.map((x: number) => x + 3);
 
 // TODO: Write a function that takes an Optional<string> and prefixes the string with "hello"
+export const prefixHello = (input: Optional<string>) => input.map((i: string) => "hello " + i);
 
 /*
 TODO: If the below function is called, does it return a value or throw an exception? Why should it behave one way or the other?
-Answer: ...
+Answer: return Optional.none() since there is nothing to runs the function over
  */
 const willItKersplode = (): Optional<string> => {
   const z = Optional.none<string>();
