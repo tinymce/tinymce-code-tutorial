@@ -127,7 +127,7 @@ export const getAgeOrDefault = (
   a: Optional<{ age: number }>
 ): { age: number } => a.getOr({ age: 0 });
 
-// TODO: Write the same function using fold
+// DONE: Write the same function using fold
 export const getAgeOrDefaultFold = (
   a: Optional<{ age: number }>
 ): { age: number } =>
