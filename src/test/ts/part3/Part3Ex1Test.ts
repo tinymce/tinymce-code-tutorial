@@ -60,7 +60,7 @@ describe("Part3Ex1Test", () => {
     const editor = hook.editor();
 
     editor.setContent(
-      /* DONE - tinymce removes unstyled spans */
+      /* DONE - tinymce removes unstyled spans by default */
       `
       <p>A paragraph with <span style="text-decoration: underline;">a span</span></p>
       <p>A second paragraph</p>
