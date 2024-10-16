@@ -7,12 +7,19 @@ describe('Exercise2ArrayFunctionsTest', () => {
     Ex.runEach1();
   });
 
+  // ! Needs runEach2 test to illustrate behaviour
+
+  it('runEach2', () => {
+    Ex.runEach2();
+  });
+
   it('frog names', () => {
     assert.deepEqual(Ex.frogNames(Ex.myFrogs), [ 'frog1', 'frog2', 'loudfrog', 'quietfrog' ], 'frog names');
   });
 
   it('frog ages', () => {
-    // TODO: write a test for your frog ages function
+    // * DONE: write a test for your frog ages function
+    assert.deepEqual(Ex.frogAges(Ex.myFrogs), [ 3, 4, 1, 10 ], 'frog ages');
   });
 
   it('ribbitting frogs', () => {

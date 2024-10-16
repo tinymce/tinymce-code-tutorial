@@ -8,3 +8,5 @@
 *-bedrock-*.xml
 tests-imports.ts
 yarn-error.log
+
+.DS_Store

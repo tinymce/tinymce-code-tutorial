@@ -59,7 +59,7 @@ describe('Part3Ex1Test', () => {
   it('has content like an editor', () => {
     const editor = hook.editor();
 
-    editor.setContent(/* TODO */ "<p>Hello world</p>");
+    editor.setContent(/* TODO */ "<p>He<span class='dummyclass'>ll</span>o</p> <p>world</p>");
 
     /*
     Another useful module from mcagar, TinyAssertions is full of ways to make

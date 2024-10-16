@@ -24,7 +24,8 @@ yarn bedrock-auto -b chrome-headless -f src/test/ts/part2/Exercise1CodeStyleTest
 If you want to run this in a full browser, try:
 yarn bedrock-auto -b chrome -f src/test/ts/part2/Exercise1CodeStyleTest.ts
 
-TODO: Run bedrock in all modes shown above.
+! Needed to `brew install chromedriver && xattr -d com.apple.quarantine $(which chromedriver)`
+* DONE: Run bedrock in all modes shown above.
 
 2. Defining tests
 
@@ -42,7 +43,9 @@ describe('Exercise1CodeStyleTests', () => {
     const b: Boundz = ({ x1: 3, y1: 4, x2: 7, y2: 8 });
     assert.deepEqual(CodeStyle.width(b), 4, 'Width');
 
-    // TODO: write another test case for width
+    // * DONE: write another test case for width
+    const b2: Boundz = ({ x1: 0, y1: 0, x2: 0, y2: 0 });
+    assert.deepEqual(CodeStyle.width(b2), 0, 'Width');
   });
 
   /*
@@ -52,20 +55,27 @@ describe('Exercise1CodeStyleTests', () => {
   In this case, we'll call "it" again, to write a test for 'height'
 
    */
-  // TODO: write a simple test case for height
+  // * DONE: write a simple test case for height
+  it('height', () => {
+    const b: Boundz = ({ x1: 3, y1: 4, x2: 7, y2: 8 });
+    assert.deepEqual(CodeStyle.height(b), 4, 'Height');
+
+    const b2: Boundz = ({ x1: 0, y1: 0, x2: 0, y2: 0 });
+    assert.deepEqual(CodeStyle.height(b2), 0, 'Height');
+  });
 
   /*
   4. Test output
 
   The below test should fail.
 
-  TODO: remove the ".skip" to enable this test. Run it using the commands above.
+  * DONE: remove the ".skip" to enable this test. Run it using the commands above.
   Notice that the output shows a diff.
-  TODO: Correct the test and run it again.
+  * DONE: Correct the test and run it again.
 
    */
 
-  it.skip('failing test', () => {
-    assert.deepEqual({ a: 1, b: 2 }, { a: 1, b: 7, c: 8 });
+  it('succeeding test', () => {
+    assert.deepEqual({ a: 1, b: 2 }, { a: 1, b: 2 });
   });
 });

@@ -41,7 +41,7 @@ as the main document.
 
 TODO: Use SugarElement's fromHtml and fromText functions to create a few elements.
  */
-
+const se4: SugarElement<HTMLTextAreaElement> = SugarElement.fromTag('textarea');
 
 /*
 We often have to traverse from an element to its relatives. The Traverse module has useful functions for this.
@@ -54,7 +54,8 @@ We often have to traverse from an element to its relatives. The Traverse module 
   const parent2 = Traverse.parent(kid);
 
 // TODO: inspect the type of Traverse.parent and explain why that type was used.
-// Answer:
+// Answer: It's optional since the document element has no parent
+// the optional type is SugarElement<Node & ParentNode> since ParentNode needs Node as well
 };
 
 
@@ -67,11 +68,16 @@ We often have to traverse from an element to its relatives. The Traverse module 
   Insert.append(parent, kid2);
 
   // TODO: starting at kid1, find kid2
+  Traverse.nextSibling(kid1)
 
   // TODO: starting at kid2, find kid1
+  Traverse.prevSibling(kid2)
 
   // TODO: starting at parent, find both kids
+  Traverse.children(parent)
 
   // TODO: kid2 grew up - give it its own child node
+  const gchild: SugarElement<HTMLParagraphElement> = SugarElement.fromTag('p');
+  Insert.append(kid2, gchild);
 };
 

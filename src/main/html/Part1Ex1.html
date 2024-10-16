@@ -7,32 +7,34 @@
   Instantiating TinyMCE is one of the first things TinyMCE users need to do, so it makes sense for this to be
   our first exercise.
 
-  TODO Head over to https://www.tiny.cloud/ and sign up for an API key. Replace the 'no-api-key' with your api key in the below script tag.
+  ! Updated: Used tinymceV7 instead of tinymceV5
+   Head over to https://www.tiny.cloud/ and sign up for an API key. Replace the 'no-api-key' with your api key in the below script tag.
   -->
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script src="https://cdn.tiny.cloud/1/<REDACTED>/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
 
 <!--
-This project has webpack configured. Run `yarn` to install the dependencies, `yarn webpack-dev-server` to run the server, and then navigate to
+    ! NOTE: Needed to run `export NODE_OPTIONS=--openssl-legacy-provider` first
+    * DONE This project has webpack configured. Run `yarn` to install the dependencies, `yarn webpack-dev-server` to run the server, and then navigate to
  http://localhost:8080/src/main/html/Part1Ex1.html to view this page.
 
 tinymce.init is the most important API function of TinyMCE. In its most basic form, you specify a CSS selector for an
 element, and a TinyMCE editor appears where the element was:
 -->
 <textarea id="editor1"></textarea>
-<script>tinymce.init({ selector: '#editor1' });</script>
+<!-- <script>tinymce.init({ selector: '#editor1' });</script> -->
 
 <!--
 If you inspect the DOM in your browser, you'll notice that the textarea has been hidden, and editor dom elements created
 beside the textarea.
 
 Since a selector can match multiple elements, you can use tinymce.init to create multiple editors.
-TODO In the below script tag, instantiate TinyMCE editors in the below
+* DONE In the below script tag, instantiate TinyMCE editors in the below
 -->
+<!-- <textarea class="editorSet"></textarea>
 <textarea class="editorSet"></textarea>
-<textarea class="editorSet"></textarea>
-<script></script>
+<script>tinymce.init({ selector: 'textarea.editorSet' })</script> -->
 
 
 <!--
@@ -46,7 +48,7 @@ List of toolbars items can be found here:
 https://www.tiny.cloud/docs/advanced/editor-control-identifiers/#toolbarcontrols
 
 
-TODO Instantiate a TinyMCE editor with no menu bar, no status bar, and toolbar buttons to do the following:
+* DONE Instantiate a TinyMCE editor with no menu bar, no status bar, and toolbar buttons to do the following:
 - make text bold
 - insert a table
 - make the editor full screen
@@ -54,6 +56,15 @@ TODO Instantiate a TinyMCE editor with no menu bar, no status bar, and toolbar b
 
 Note: you'll need to add some plugins for these to work.
 -->
+<script>
+tinymce.init({
+    selector: '#editor1',
+    plugins: 'table fullscreen code',
+    toolbar: 'bold table fullscreen code',
+    menubar: false,
+    statusbar: false
+});
+</script>
 
 
 </body>
