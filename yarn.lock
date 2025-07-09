@@ -140,13 +140,29 @@
     "@ephox/katamari" "^7.2.1"
     tslib "^2.0.0"
 
-"@ephox/sugar@^7.0.1", "@ephox/sugar@^7.1.3":
+"@ephox/sand@^4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@ephox/sand/-/sand-4.0.8.tgz#667678766546ef87b6265c8d7ec94f4f5490ce3a"
+  integrity sha512-IZQsHTUUENAHBfU8S3aGLG6cEGsyW5REV2ciLUkn07EZdbByEhbwZPr+mEK463xdE3wEOcQi7A6LfTUFMqClKA==
+  dependencies:
+    "@ephox/katamari" "^7.2.1"
+    tslib "^2.0.0"
+
+"@ephox/sugar@^7.1.3":
   version "7.1.3"
   resolved "https://registry.yarnpkg.com/@ephox/sugar/-/sugar-7.1.3.tgz#4589af2ebdb6d6afd4abd7098ccb2ed5a0d07efe"
   integrity sha512-42bAqOpZwtZQOGatJk7E3zQ1y0bKYcz7s9WimD3k8j6nEw48RUFGYiwXMOgkgGZ/OXAHQhk3ePe95qIItajb5w==
   dependencies:
     "@ephox/katamari" "^7.2.1"
     "@ephox/sand" "^4.0.7"
+
+"@ephox/sugar@^7.1.4":
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/@ephox/sugar/-/sugar-7.1.4.tgz#76b6fb47efcb69b3621c89d1fca3908657d439ab"
+  integrity sha512-CU0afpanKkoTaqEIjRTwnFL9QIpNpycDJbhTmnEcvFFKwYRcx1dK6WpkBWgGTLVGB1MO0lBpMfvGo1KczVV0iw==
+  dependencies:
+    "@ephox/katamari" "^7.2.1"
+    "@ephox/sand" "^4.0.8"
 
 "@ephox/wrap-jsverify@^2.0.1":
   version "2.0.1"

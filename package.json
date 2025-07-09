@@ -19,7 +19,7 @@
   "homepage": "https://github.com/tinymce/tinymce-code-tutorial#readme",
   "dependencies": {
     "@ephox/katamari": "^7.0.1",
-    "@ephox/sugar": "^7.0.1"
+    "@ephox/sugar": "^7.1.4"
   },
   "devDependencies": {
     "@ephox/agar": "^5.3.1",
